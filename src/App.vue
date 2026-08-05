@@ -1,24 +1,110 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { invoke } from "@tauri-apps/api/core";
+import ImportComponent from "./components/ImportComponent.vue";
+import CourseGroupsView from "./components/CourseGroupsView.vue";
+import StudentsView from "./components/StudentsView.vue";
+import { useAppStore } from "./stores/appStore";
 
-
+const appStore = useAppStore();
 </script>
 
 <template>
-  
+  <main class="container">
+    <div class="header">
+      <h1>Blockplaner GUI</h1>
+      <p class="subtitle">Manage course scheduling and planning</p>
+    </div>
+
+    <ImportComponent />
+
+    <div v-if="appStore.appData.value" class="data-views">
+      <CourseGroupsView 
+        :course-groups="appStore.appData.value.course_groups"
+        :is-loading="appStore.isLoading.value"
+      />
+      
+      <StudentsView 
+        :students="appStore.appData.value.students"
+        :course-groups="appStore.appData.value.course_groups"
+        :is-loading="appStore.isLoading.value"
+      />
+    </div>
+  </main>
 </template>
 
 <style scoped>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
+.header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #249b73);
+.header h1 {
+  margin: 0;
+  color: #0f0f0f;
 }
 
+.subtitle {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.data-views {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.section {
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header h1 {
+    color: #f6f6f6;
+  }
+
+  .subtitle {
+    color: #aaa;
+  }
+
+  .section {
+    background-color: #2f2f2f;
+    border-color: #444;
+  }
+
+  .section h2 {
+    color: #f6f6f6;
+  }
+
+  .section p {
+    color: #ccc;
+  }
+}
 </style>
+
 <style>
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -38,27 +124,9 @@ import { invoke } from "@tauri-apps/api/core";
 
 .container {
   margin: 0;
-  padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: 0.75s;
-}
-
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #24c8db);
-}
-
-.row {
-  display: flex;
-  justify-content: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 a {
@@ -71,7 +139,9 @@ a:hover {
   color: #535bf2;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   text-align: center;
 }
 
@@ -96,6 +166,7 @@ button {
 button:hover {
   border-color: #396cd8;
 }
+
 button:active {
   border-color: #396cd8;
   background-color: #e8e8e8;
@@ -104,10 +175,6 @@ button:active {
 input,
 button {
   outline: none;
-}
-
-#greet-input {
-  margin-right: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -125,9 +192,9 @@ button {
     color: #ffffff;
     background-color: #0f0f0f98;
   }
+
   button:active {
     background-color: #0f0f0f69;
   }
 }
-
 </style>
