@@ -28,82 +28,80 @@ export interface AppData {
   max_students_per_course: number;
 }
 
-export const useAppStore = () => {
-  const appData = ref<AppData | null>(null);
-  const isLoading = ref(false);
-  const error = ref<string | null>(null);
+const appData = ref<AppData | null>(null);
+const isLoading = ref(false);
+const error = ref<string | null>(null);
 
-  const fetchAppData = async () => {
-    try {
-      isLoading.value = true;
-      error.value = null;
-      const result = await invoke<string>("get_app_data");
-      appData.value = JSON.parse(result);
-    } catch (err) {
-      error.value = `Failed to fetch app data: ${err}`;
-      console.error(err);
-    } finally {
-      isLoading.value = false;
-    }
-  };
-
-  const importXML = async (filePath: string) => {
-    try {
-      isLoading.value = true;
-      error.value = null;
-      const result = await invoke<string>("import_xml", {
-        filePath: filePath,
-      });
-      appData.value = JSON.parse(result);
-      return appData.value;
-    } catch (err) {
-      error.value = `Failed to import XML: ${err}`;
-      console.error(err);
-      throw err;
-    } finally {
-      isLoading.value = false;
-    }
-  };
-
-  const importJSON = async (filePath: string) => {
-    try {
-      isLoading.value = true;
-      error.value = null;
-      const result = await invoke<string>("import_json", {
-        filePath: filePath,
-      });
-      appData.value = JSON.parse(result);
-      return appData.value;
-    } catch (err) {
-      error.value = `Failed to import JSON: ${err}`;
-      console.error(err);
-      throw err;
-    } finally {
-      isLoading.value = false;
-    }
-  };
-
-  const clearData = async () => {
-    try {
-      isLoading.value = true;
-      error.value = null;
-      await invoke("clear_app_data");
-      appData.value = null;
-    } catch (err) {
-      error.value = `Failed to clear data: ${err}`;
-      console.error(err);
-    } finally {
-      isLoading.value = false;
-    }
-  };
-
-  return {
-    appData,
-    isLoading,
-    error,
-    fetchAppData,
-    importXML,
-    importJSON,
-    clearData,
-  };
+const fetchAppData = async () => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    const result = await invoke<string>("get_app_data");
+    appData.value = JSON.parse(result);
+  } catch (err) {
+    error.value = `Failed to fetch app data: ${err}`;
+    console.error(err);
+  } finally {
+    isLoading.value = false;
+  }
 };
+
+const importXML = async (filePath: string) => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    const result = await invoke<string>("import_xml", {
+      filePath: filePath,
+    });
+    appData.value = JSON.parse(result);
+    return appData.value;
+  } catch (err) {
+    error.value = `Failed to import XML: ${err}`;
+    console.error(err);
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+const importJSON = async (filePath: string) => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    const result = await invoke<string>("import_json", {
+      filePath: filePath,
+    });
+    appData.value = JSON.parse(result);
+    return appData.value;
+  } catch (err) {
+    error.value = `Failed to import JSON: ${err}`;
+    console.error(err);
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+const clearData = async () => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    await invoke("clear_app_data");
+    appData.value = null;
+  } catch (err) {
+    error.value = `Failed to clear data: ${err}`;
+    console.error(err);
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+export const useAppStore = () => ({
+  appData,
+  isLoading,
+  error,
+  fetchAppData,
+  importXML,
+  importJSON,
+  clearData,
+});

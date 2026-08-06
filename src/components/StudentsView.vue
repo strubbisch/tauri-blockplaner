@@ -35,11 +35,8 @@ const getCourseName = (courseId: number, courseGroups: CourseGroup[] = []) => {
         <div v-if="student.choices && student.choices.length > 0" class="student-choices">
           <div class="label">Choices:</div>
           <div class="choice-list">
-            <span v-for="choiceId in student.choices.slice(0, 3)" :key="choiceId" class="choice-tag">
+            <span v-for="choiceId in student.choices" :key="choiceId" class="choice-tag">
               {{ getCourseName(choiceId, courseGroups) }}
-            </span>
-            <span v-if="student.choices.length > 3" class="choice-tag more">
-              +{{ student.choices.length - 3 }} more
             </span>
           </div>
         </div>

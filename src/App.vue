@@ -3,15 +3,20 @@ import ImportComponent from "./components/ImportComponent.vue";
 import CourseGroupsView from "./components/CourseGroupsView.vue";
 import StudentsView from "./components/StudentsView.vue";
 import { useAppStore } from "./stores/appStore";
+import { onMounted } from "vue";
 
 const appStore = useAppStore();
+
+onMounted(() => {
+  void appStore.fetchAppData();
+});
 </script>
 
 <template>
   <main class="container">
     <div class="header">
-      <h1>Blockplaner GUI</h1>
-      <p class="subtitle">Manage course scheduling and planning</p>
+      <h2>Blockplaner GUI</h2>
+      <p class="subtitle">Kursplanung verwalten</p>
     </div>
 
     <ImportComponent />
