@@ -18,13 +18,15 @@ const appStore = useAppStore();
     <ImportComponent />
 
     <div v-if="appStore.appData.value" class="data-views">
-      <CourseGroupsView 
+      <CourseGroupsView
+        :course-groups="appStore.courseGroups.value"
         :is-loading="appStore.isLoading.value"
       />
       
       <StudentsView 
         :students="appStore.appData.value.students"
         :course-groups="appStore.appData.value.course_groups"
+        :courses="appStore.appData.value.courses"
         :is-loading="appStore.isLoading.value"
       />
     </div>

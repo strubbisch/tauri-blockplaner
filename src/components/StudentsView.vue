@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import type { Student, CourseGroup } from "../stores/appStore";
+import type { Student, CourseGroup, Course } from "../stores/appStore";
 
 interface Props {
   students?: Student[];
   courseGroups?: CourseGroup[];
+  courses?: Course[];
   isLoading?: boolean;
 }
 
 defineProps<Props>();
 
-const getCourseName = (courseId: number, courseGroups: CourseGroup[] = []) => {
-  const group = courseGroups.find(g => g.id === courseId);
-  return group ? `${group.subject} (${group.course_type})` : `Course ${courseId}`;
+const getCourseGroupName = (courseGroupId: number, courseGroups: CourseGroup[] = []) => {
+  const group = courseGroups.find(g => g.id === courseGroupId);
+  return group ? `${group.subject}-${group.course_type}` : `Course ${courseGroupId}`;
 };
+
+const getCourseName = (courseId: number, courses: Course[] = [], courseGroups: CourseGroup[] = []) => {
+  const course = courses.find(c => c.id === courseId);
+  const group = courseGroups.find(g => g.id === course?.course_group);
+  return group ? `${group.subject}-${group.course_type}-${course?.number}` : 'Kurs nicht gefunden';
+}
 </script>
 
 <template>
@@ -36,7 +43,7 @@ const getCourseName = (courseId: number, courseGroups: CourseGroup[] = []) => {
           <div class="label">gewählte Kurse:</div>
           <div class="choice-list">
             <span v-for="choiceId in student.choices" :key="choiceId" class="choice-tag">
-              {{ getCourseName(choiceId, courseGroups) }}
+              {{ getCourseGroupName(choiceId, courseGroups) }}
             </span>
           </div>
         </div>
@@ -45,7 +52,7 @@ const getCourseName = (courseId: number, courseGroups: CourseGroup[] = []) => {
           <div class="label">zugeordnete Kurse:</div>
           <div class="course-list">
             <span v-for="courseId in student.courses" :key="courseId" class="course-tag">
-              {{ getCourseName(courseId, courseGroups) }}
+              {{ getCourseName(courseId, courses, courseGroups) }}
             </span>
           </div>
         </div>

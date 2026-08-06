@@ -1,6 +1,5 @@
 mod import;
 mod state;
-mod course_groups;
 
 use blockplaner_core::data::AppData;
 use state::AppState;
@@ -38,8 +37,7 @@ pub fn run() {
             get_app_data,
             import::import_xml,
             import::import_json,
-            clear_app_data,
-            course_groups::get_course_groups,
+            clear_app_data
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

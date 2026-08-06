@@ -1,25 +1,10 @@
 <script setup lang="ts">
-import { invoke } from '@tauri-apps/api/core';
-import { onMounted, ref } from 'vue';
-
-
-interface CourseGroup {
-  id: number,
-  subject: string,
-  course_type: string,
-  students_count: number
-}
+import { CourseGroupWithCount } from '../stores/appStore';
 
 interface Props {
+  courseGroups: CourseGroupWithCount[];
   isLoading?: boolean;
 }
-
-const courseGroups = ref<CourseGroup[]| null>(null);
-
-onMounted(async () => {
-  let json_result = await invoke<string>("get_course_groups");
-  courseGroups.value = JSON.parse(json_result);
-})
 
 defineProps<Props>();
 </script>
@@ -30,7 +15,7 @@ defineProps<Props>();
     
     <div v-if="isLoading" class="loading">Loading...</div>
     
-    <div v-else-if="!courseGroups || courseGroups.length === 0" class="empty">
+    <div v-else-if="courseGroups.length === 0" class="empty">
       <p>Bisher keine Kursgruppen importiert.</p>
     </div>
     
@@ -40,7 +25,7 @@ defineProps<Props>();
           <h4>{{ group.subject }}</h4>
           <span class="group-type">{{ group.course_type }}</span>
         </div>
-        <div class="group-id">Anzahl Schüler: {{ group.students_count }}</div>
+        <div class="students-count">Anzahl Schüler: {{ group.students_count }}</div>
       </div>
     </div>
   </div>
@@ -107,7 +92,7 @@ defineProps<Props>();
   font-weight: 500;
 }
 
-.group-id {
+.students-count {
   font-size: 12px;
   color: #999;
 }

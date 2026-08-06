@@ -1,10 +1,14 @@
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 
 export interface CourseGroup {
   id: number;
   subject: string;
   course_type: string;
+}
+
+export interface CourseGroupWithCount extends CourseGroup {
+  students_count: number;
 }
 
 export interface Student {
@@ -14,9 +18,19 @@ export interface Student {
   courses: number[];
 }
 
+export interface Course {
+  id: number;
+  course_group: number;
+  number: number;
+  teacher: string;
+  room: string;
+  hours_per_week: number;
+  students: number[];
+}
+
 export interface AppData {
   course_groups: CourseGroup[];
-  courses: unknown[];
+  courses: Course[];
   students: Student[];
   blocks: unknown[];
   course_units: unknown[];
@@ -31,6 +45,20 @@ export interface AppData {
 const appData = ref<AppData | null>(null);
 const isLoading = ref(false);
 const error = ref<string | null>(null);
+
+const courseGroups = computed<CourseGroupWithCount[]>(() => {
+  if (!appData.value) return [];
+  const countById = new Map<number, number>();
+  for (const student of appData.value.students) {
+    for (const choice of student.choices) {
+      countById.set(choice, (countById.get(choice) ?? 0) + 1);
+    }
+  }
+  return appData.value.course_groups.map(g => ({
+    ...g,
+    students_count: countById.get(g.id) ?? 0,
+  }));
+});
 
 const fetchAppData = async () => {
   try {
@@ -50,10 +78,9 @@ const importXML = async (filePath: string) => {
   try {
     isLoading.value = true;
     error.value = null;
-    const result = await invoke<string>("import_xml", {
+    appData.value = await invoke<AppData>("import_xml", {
       filePath: filePath,
     });
-    appData.value = JSON.parse(result);
     return appData.value;
   } catch (err) {
     error.value = `Failed to import XML: ${err}`;
@@ -68,10 +95,9 @@ const importJSON = async (filePath: string) => {
   try {
     isLoading.value = true;
     error.value = null;
-    const result = await invoke<string>("import_json", {
+    appData.value = await invoke<AppData>("import_json", {
       filePath: filePath,
     });
-    appData.value = JSON.parse(result);
     return appData.value;
   } catch (err) {
     error.value = `Failed to import JSON: ${err}`;
@@ -98,6 +124,7 @@ const clearData = async () => {
 
 export const useAppStore = () => ({
   appData,
+  courseGroups,
   isLoading,
   error,
   fetchAppData,

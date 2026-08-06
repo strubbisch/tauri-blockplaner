@@ -1,11 +1,11 @@
 use std::path::PathBuf;
 
-use blockplaner_core::import::{import_from_json, import_from_xml};
+use blockplaner_core::{data::AppData, import::{import_from_json, import_from_xml}};
 
 use crate::state::AppState;
 
 #[tauri::command]
-pub fn import_xml(file_path: String, app_state: tauri::State<AppState>) -> Result<String, String> {
+pub fn import_xml(file_path: String, app_state: tauri::State<AppState>) -> Result<AppData, String> {
     let path = PathBuf::from(&file_path);
     match import_from_xml(path) {
         Ok(import_result) => {
@@ -17,17 +17,14 @@ pub fn import_xml(file_path: String, app_state: tauri::State<AppState>) -> Resul
             app_data.course_groups = import_result.course_groups;
             app_data.students = import_result.students;
 
-            match serde_json::to_string(&*app_data) {
-                Ok(json) => Ok(json),
-                Err(e) => Err(format!("Failed to serialize result: {}", e)),
-            }
+            Ok(app_data.clone())
         }
-        Err(e) => Err(format!("Import failed: {}", e)),
+        Err(e) => Err(format!("Import fehlgeschlagen: {}", e)),
     }
 }
 
 #[tauri::command]
-pub fn import_json(file_path: String, app_state: tauri::State<AppState>) -> Result<String, String> {
+pub fn import_json(file_path: String, app_state: tauri::State<AppState>) -> Result<AppData, String> {
     let path = PathBuf::from(&file_path);
     match import_from_json(path) {
         Ok(new_app_data) => {
@@ -38,11 +35,8 @@ pub fn import_json(file_path: String, app_state: tauri::State<AppState>) -> Resu
 
             *app_data = new_app_data;
 
-            match serde_json::to_string(&*app_data) {
-                Ok(json) => Ok(json),
-                Err(e) => Err(format!("Failed to serialize result: {}", e)),
-            }
+            Ok(app_data.clone())
         }
-        Err(e) => Err(format!("Import failed: {}", e)),
+        Err(e) => Err(format!("Import fehlgeschlagen: {}", e)),
     }
 }
