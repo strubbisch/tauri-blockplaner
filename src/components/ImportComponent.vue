@@ -79,7 +79,7 @@ async function clearData() {
 
 <template>
   <div class="import-container">
-    <h2>Import Data</h2>
+    <h2>Daten importieren</h2>
 
     <div class="import-buttons">
       <button
@@ -87,14 +87,14 @@ async function clearData() {
         :disabled="appStore.isLoading.value"
         class="btn btn-primary"
       >
-        {{ appStore.isLoading.value ? "Importing..." : "Import XML" }}
+        {{ appStore.isLoading.value ? "Importiere..." : "Import XML" }}
       </button>
       <button
         @click="importJSON"
         :disabled="appStore.isLoading.value"
         class="btn btn-primary"
       >
-        {{ appStore.isLoading.value ? "Importing..." : "Import JSON" }}
+        {{ appStore.isLoading.value ? "Importiere..." : "Import JSON" }}
       </button>
     </div>
 
@@ -103,19 +103,19 @@ async function clearData() {
     </div>
 
     <div v-if="appStore.appData.value && courseGroupsCount > 0" class="data-summary">
-      <h3>✓ Data Successfully Imported</h3>
+      <h3>✓ Daten erfolgreich importiert</h3>
       <div class="summary-grid">
         <div class="summary-item">
-          <strong>Course Groups</strong>
+          <strong>Kursgruppen</strong>
           <div class="count">{{ courseGroupsCount }}</div>
         </div>
         <div class="summary-item">
-          <strong>Students</strong>
+          <strong>Schüler</strong>
           <div class="count">{{ studentsCount }}</div>
         </div>
       </div>
       <button @click="clearData" class="btn btn-secondary">
-        Clear All Data
+        Lösche alle Daten
       </button>
     </div>
   </div>

@@ -3,13 +3,9 @@ import ImportComponent from "./components/ImportComponent.vue";
 import CourseGroupsView from "./components/CourseGroupsView.vue";
 import StudentsView from "./components/StudentsView.vue";
 import { useAppStore } from "./stores/appStore";
-import { onMounted } from "vue";
 
 const appStore = useAppStore();
 
-onMounted(() => {
-  void appStore.fetchAppData();
-});
 </script>
 
 <template>
@@ -23,7 +19,6 @@ onMounted(() => {
 
     <div v-if="appStore.appData.value" class="data-views">
       <CourseGroupsView 
-        :course-groups="appStore.appData.value.course_groups"
         :is-loading="appStore.isLoading.value"
       />
       

@@ -17,12 +17,12 @@ const getCourseName = (courseId: number, courseGroups: CourseGroup[] = []) => {
 
 <template>
   <div class="students-view">
-    <h3>Students</h3>
+    <h3>Schüler</h3>
     
     <div v-if="isLoading" class="loading">Loading...</div>
     
     <div v-else-if="!students || students.length === 0" class="empty">
-      <p>No students imported yet</p>
+      <p>Bisher keine Schüler importiert.</p>
     </div>
     
     <div v-else class="students-list">
@@ -33,7 +33,7 @@ const getCourseName = (courseId: number, courseGroups: CourseGroup[] = []) => {
         </div>
         
         <div v-if="student.choices && student.choices.length > 0" class="student-choices">
-          <div class="label">Choices:</div>
+          <div class="label">gewählte Kurse:</div>
           <div class="choice-list">
             <span v-for="choiceId in student.choices" :key="choiceId" class="choice-tag">
               {{ getCourseName(choiceId, courseGroups) }}
@@ -42,7 +42,7 @@ const getCourseName = (courseId: number, courseGroups: CourseGroup[] = []) => {
         </div>
         
         <div v-if="student.courses && student.courses.length > 0" class="student-courses">
-          <div class="label">Assigned:</div>
+          <div class="label">zugeordnete Kurse:</div>
           <div class="course-list">
             <span v-for="courseId in student.courses" :key="courseId" class="course-tag">
               {{ getCourseName(courseId, courseGroups) }}

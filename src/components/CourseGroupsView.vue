@@ -1,22 +1,37 @@
 <script setup lang="ts">
-import type { CourseGroup } from "../stores/appStore";
+import { invoke } from '@tauri-apps/api/core';
+import { onMounted, ref } from 'vue';
+
+
+interface CourseGroup {
+  id: number,
+  subject: string,
+  course_type: string,
+  students_count: number
+}
 
 interface Props {
-  courseGroups?: CourseGroup[];
   isLoading?: boolean;
 }
+
+const courseGroups = ref<CourseGroup[]| null>(null);
+
+onMounted(async () => {
+  let json_result = await invoke<string>("get_course_groups");
+  courseGroups.value = JSON.parse(json_result);
+})
 
 defineProps<Props>();
 </script>
 
 <template>
   <div class="course-groups-view">
-    <h3>Course Groups</h3>
+    <h3>Kursgruppen</h3>
     
     <div v-if="isLoading" class="loading">Loading...</div>
     
     <div v-else-if="!courseGroups || courseGroups.length === 0" class="empty">
-      <p>No course groups imported yet</p>
+      <p>Bisher keine Kursgruppen importiert.</p>
     </div>
     
     <div v-else class="groups-grid">
@@ -25,7 +40,7 @@ defineProps<Props>();
           <h4>{{ group.subject }}</h4>
           <span class="group-type">{{ group.course_type }}</span>
         </div>
-        <div class="group-id">ID: {{ group.id }}</div>
+        <div class="group-id">Anzahl Schüler: {{ group.students_count }}</div>
       </div>
     </div>
   </div>
