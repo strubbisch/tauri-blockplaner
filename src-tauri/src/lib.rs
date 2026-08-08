@@ -91,9 +91,26 @@ fn create_parallel_course(
         students: Vec::new(),
     };
     app_data.courses.push(new_course);
+    app_data.courses.sort();
     Ok(app_data.clone())
 }
 
+#[tauri::command]
+fn delete_course(
+    course_group_id: usize,
+    app_state: tauri::State<AppState>
+) -> Result<AppData, String> {
+    let mut app_data = app_state.app_data.lock().unwrap();
+    
+    let index = app_data
+        .courses
+        .iter()
+        .rposition(|c| c.course_group == course_group_id)
+        .ok_or_else(|| format!("Kursgruppe mit der ID {course_group_id} enthält keinen Kurs!"))?;
+    app_data.courses.remove(index);
+    app_data.courses.sort();
+    Ok(app_data.clone())
+}
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let app_state = AppState::new();
@@ -108,7 +125,8 @@ pub fn run() {
             import::import_json,
             clear_app_data,
             update_course,
-            create_parallel_course
+            create_parallel_course,
+            delete_course,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -150,6 +150,17 @@ const createParallelCourse = async () => {
 
   selectedCourseId.value = null;
 }
+
+const deleteCourse = async () => {
+  if (!selectedCourse.value) {
+    return;
+  }
+
+  await appStore.deleteCourse(
+    selectedCourse.value.course_group,
+  );
+  selectedCourseId.value = null;
+}
 </script>
 
 <template>
@@ -213,7 +224,7 @@ const createParallelCourse = async () => {
           <button type="submit" :disabled="isLoadingState || !isDirty">
             {{ isLoadingState ? "Aktualisiere..." : "Aktualisieren" }}
           </button>
-          <button>Kurs löschen</button>
+          <button @click="deleteCourse">Kurs löschen</button>
           <button @click="createParallelCourse">Parallelkurs anlegen</button>
         </div>
       </form>
