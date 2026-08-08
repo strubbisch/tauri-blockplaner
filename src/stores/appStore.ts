@@ -137,7 +137,6 @@ const updateCourse = async (
       room,
       hoursPerWeek,
     });
-    console.log(appData.value.courses);
     return appData.value;
   } catch (err) {
     error.value = `Failed to update course: ${err}`;
@@ -147,6 +146,27 @@ const updateCourse = async (
     isLoading.value = false;
   }
 };
+
+const createParallelCourse = async (
+  courseGroupId: number,
+  hoursPerWeek: number,
+) => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    appData.value = await invoke<AppData>("create_parallel_course", {
+      courseGroupId,
+      hoursPerWeek,
+    });
+    return appData.value;
+  } catch (err) {
+    error.value = `Fehler beim Erstellen des Parallelkurses: ${err}`;
+    console.error(err);
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+}
 
 export const useAppStore = () => ({
   appData,
@@ -158,4 +178,5 @@ export const useAppStore = () => ({
   importJSON,
   clearData,
   updateCourse,
+  createParallelCourse,
 });

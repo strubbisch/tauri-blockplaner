@@ -1,6 +1,9 @@
 use std::path::PathBuf;
 
-use blockplaner_core::{data::AppData, import::{import_from_json, import_from_xml}};
+use blockplaner_core::{
+    data::AppData,
+    import::{import_from_json, import_from_xml},
+};
 
 use crate::state::AppState;
 
@@ -24,7 +27,10 @@ pub fn import_xml(file_path: String, app_state: tauri::State<AppState>) -> Resul
 }
 
 #[tauri::command]
-pub fn import_json(file_path: String, app_state: tauri::State<AppState>) -> Result<AppData, String> {
+pub fn import_json(
+    file_path: String,
+    app_state: tauri::State<AppState>,
+) -> Result<AppData, String> {
     let path = PathBuf::from(&file_path);
     match import_from_json(path) {
         Ok(new_app_data) => {

@@ -41,7 +41,7 @@ const activeView = ref<"overview" | "courses">("overview");
       </div>
       <CoursesView
         v-else-if="activeView === 'courses'"
-        class="courses-layout"
+        class="courses-view-panel"
         :courses="appStore.appData.value.courses"
         :course-groups="appStore.appData.value.course_groups"
         :is-loading="appStore.isLoading.value"
@@ -81,7 +81,7 @@ const activeView = ref<"overview" | "courses">("overview");
   flex: 1;
 }
 
-.courses-layout {
+.courses-view-panel {
   flex: 1;
 }
 
@@ -219,13 +219,17 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   border-color: #396cd8;
 }
 
 button:active {
   border-color: #396cd8;
   background-color: #e8e8e8;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 input,

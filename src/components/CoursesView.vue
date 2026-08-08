@@ -77,6 +77,8 @@ const isDirty = computed(() => {
   );
 });
 
+const isLoadingState = computed(() => props.isLoading ?? false);
+
 watch(
   selectedCourse,
   (course) => {
@@ -106,7 +108,19 @@ watch(
 );
 
 const selectCourse = (courseId: number) => {
+  const course = props.courses.find((item) => item.id === courseId);
   selectedCourseId.value = courseId;
+  if (!course) {
+    return;
+  }
+  const normalizedCourse = normalizeCourseFields(
+    course.teacher,
+    course.room,
+    course.hours_per_week,
+  );
+  formTeacher.value = normalizedCourse.teacher;
+  formRoom.value = normalizedCourse.room;
+  formHoursPerWeek.value = normalizedCourse.hoursPerWeek;
 };
 
 const updateSelectedCourse = async () => {
@@ -120,7 +134,22 @@ const updateSelectedCourse = async () => {
     formNormalized.value.room,
     formNormalized.value.hoursPerWeek,
   );
+
+  selectedCourseId.value = null;
 };
+
+const createParallelCourse = async () => {
+  if (!selectedCourse.value) {
+    return;
+  }
+
+  await appStore.createParallelCourse(
+    selectedCourse.value.course_group,
+    selectedCourse.value.hours_per_week,
+  );
+
+  selectedCourseId.value = null;
+}
 </script>
 
 <template>
@@ -133,7 +162,7 @@ const updateSelectedCourse = async () => {
       <p>Bisher keine Kurse importiert.</p>
     </div>
 
-    <div v-else class="courses-layout">
+    <div v-else class="courses-content">
       <div class="courses-grid">
         <button
           v-for="course in coursesWithGroup"
@@ -181,9 +210,11 @@ const updateSelectedCourse = async () => {
         </div>
 
         <div class="form-actions">
-          <button type="submit" :disabled="isLoading || !isDirty">
-            {{ isLoading ? "Aktualisiere..." : "Aktualisieren" }}
+          <button type="submit" :disabled="isLoadingState || !isDirty">
+            {{ isLoadingState ? "Aktualisiere..." : "Aktualisieren" }}
           </button>
+          <button>Kurs löschen</button>
+          <button @click="createParallelCourse">Parallelkurs anlegen</button>
         </div>
       </form>
 
@@ -199,11 +230,15 @@ const updateSelectedCourse = async () => {
   padding: 20px;
   border-radius: 8px;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .courses-view h3 {
-  margin-top: 0;
+  margin: 0;
   color: #333;
+  text-align: center;
 }
 
 .loading,
@@ -214,7 +249,7 @@ const updateSelectedCourse = async () => {
   font-size: 14px;
 }
 
-.courses-layout {
+.courses-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 16px;
@@ -302,6 +337,8 @@ const updateSelectedCourse = async () => {
 
 .form-actions {
   margin-top: 12px;
+  display: flex;
+  gap: 8px;
 }
 
 .alert {
@@ -323,7 +360,7 @@ const updateSelectedCourse = async () => {
 }
 
 @media (max-width: 1100px) {
-  .courses-layout {
+  .courses-content {
     grid-template-columns: 1fr;
   }
 }
