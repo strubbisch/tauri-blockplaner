@@ -122,6 +122,32 @@ const clearData = async () => {
   }
 };
 
+const updateCourse = async (
+  courseId: number,
+  teacher: string,
+  room: string,
+  hoursPerWeek: number,
+) => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    appData.value = await invoke<AppData>("update_course", {
+      courseId,
+      teacher,
+      room,
+      hoursPerWeek,
+    });
+    console.log(appData.value.courses);
+    return appData.value;
+  } catch (err) {
+    error.value = `Failed to update course: ${err}`;
+    console.error(err);
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+};
+
 export const useAppStore = () => ({
   appData,
   courseGroups,
@@ -131,4 +157,5 @@ export const useAppStore = () => ({
   importXML,
   importJSON,
   clearData,
+  updateCourse,
 });

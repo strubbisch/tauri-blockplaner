@@ -1,20 +1,49 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import ImportComponent from "./components/ImportComponent.vue";
 import CourseGroupsView from "./components/CourseGroupsView.vue";
+import CoursesView from "./components/CoursesView.vue";
 import { useAppStore } from "./stores/appStore";
 
 const appStore = useAppStore();
+const activeView = ref<"overview" | "courses">("overview");
 
 </script>
 
 <template>
   <main class="container">
+    <ImportComponent v-if="!appStore.appData.value" />
 
-    <ImportComponent />
+    <div v-else class="data-views">
+      <nav class="view-menu" aria-label="Ansichten">
+        <button
+          class="view-menu-button"
+          :class="{ active: activeView === 'overview' }"
+          @click="activeView = 'overview'"
+        >
+          Übersicht
+        </button>
+        <button
+          class="view-menu-button"
+          :class="{ active: activeView === 'courses' }"
+          @click="activeView = 'courses'"
+        >
+          Kurse
+        </button>
+      </nav>
 
-    <div v-if="appStore.appData.value" class="data-views">
-      <CourseGroupsView
-        :course-groups="appStore.courseGroups.value"
+      <div v-if="activeView === 'overview'" class="overview-layout">
+        <ImportComponent />
+        <CourseGroupsView
+          :course-groups="appStore.courseGroups.value"
+          :is-loading="appStore.isLoading.value"
+        />
+      </div>
+      <CoursesView
+        v-else-if="activeView === 'courses'"
+        class="courses-layout"
+        :courses="appStore.appData.value.courses"
+        :course-groups="appStore.appData.value.course_groups"
         :is-loading="appStore.isLoading.value"
       />
     </div>
@@ -39,10 +68,37 @@ const appStore = useAppStore();
 }
 
 .data-views {
-  display: grid;
   gap: 20px;
-  margin-top: 20px;
+  width: 100%;
+}
+
+.overview-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.overview-layout > * {
   flex: 1;
+}
+
+.courses-layout {
+  flex: 1;
+}
+
+.view-menu {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.view-menu-button {
+  border: 1px solid #ddd;
+}
+
+.view-menu-button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #0056b3;
 }
 
 .section {
@@ -73,6 +129,15 @@ const appStore = useAppStore();
 }
 
 @media (prefers-color-scheme: dark) {
+  .view-menu-button {
+    border-color: #444;
+  }
+
+  .view-menu-button.active {
+    background-color: #1f6feb;
+    border-color: #388bfd;
+  }
+
   .header h1 {
     color: #f6f6f6;
   }

@@ -25,6 +25,41 @@ fn clear_app_data(app_state: tauri::State<AppState>) -> Result<(), String> {
     Ok(())
 }
 
+#[tauri::command]
+fn update_course(
+    course_id: usize,
+    teacher: String,
+    room: String,
+    hours_per_week: u8,
+    app_state: tauri::State<AppState>,
+) -> Result<AppData, String> {
+    let mut app_data = app_state
+        .app_data
+        .lock()
+        .map_err(|e| format!("Failed to lock app_data: {}", e))?;
+
+    let course = app_data
+        .courses
+        .iter_mut()
+        .find(|c| c.id == course_id)
+        .ok_or_else(|| format!("Kurs mit der ID {course_id} nicht gefunden!"))?;
+
+    course.hours_per_week = hours_per_week;
+    if teacher.is_empty() {
+        course.teacher = None
+    } else {
+        course.teacher = Some(teacher)
+    }
+    
+    if room.is_empty() {
+        course.room = None
+    } else {
+        course.room = Some(room)
+    }
+
+    Ok(app_data.clone())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     let app_state = AppState::new();
@@ -37,7 +72,8 @@ pub fn run() {
             get_app_data,
             import::import_xml,
             import::import_json,
-            clear_app_data
+            clear_app_data,
+            update_course
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
