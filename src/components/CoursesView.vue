@@ -161,6 +161,11 @@ const deleteCourse = async () => {
   );
   selectedCourseId.value = null;
 }
+
+const createCourses = async () => {
+  await appStore.createCourses();
+}
+
 </script>
 
 <template>
@@ -171,6 +176,7 @@ const deleteCourse = async () => {
 
     <div v-else-if="courses.length === 0" class="empty">
       <p>Bisher keine Kurse importiert.</p>
+      <button @click="createCourses">Kurse erstellen</button>
     </div>
 
     <div v-else class="courses-content">

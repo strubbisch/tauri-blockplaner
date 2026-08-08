@@ -187,6 +187,22 @@ const deleteCourse = async (
   }
 }
 
+const createCourses = async () => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    appData.value = await invoke<AppData>("create_courses");
+    console.log(appData.value);
+    return appData.value;
+  } catch (err) {
+    error.value =`Fehler beim Erstellen der Kurse: ${err}`;
+    console.error(err);
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+}
+
 export const useAppStore = () => ({
   appData,
   courseGroups,
@@ -199,4 +215,5 @@ export const useAppStore = () => ({
   updateCourse,
   createParallelCourse,
   deleteCourse,
+  createCourses,
 });
