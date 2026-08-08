@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { open } from "@tauri-apps/plugin-dialog";
+import { open, ask } from "@tauri-apps/plugin-dialog";
 import { useAppStore } from "../stores/appStore";
 
 const appStore = useAppStore();
@@ -10,6 +10,14 @@ const courseGroupsCount = computed(() =>
 );
 const studentsCount = computed(() => 
   appStore.appData.value?.students?.length || 0
+);
+
+const coursesCount = computed(() => 
+  appStore.appData.value?.courses?.length || 0
+);
+
+const blocksCount = computed(() => 
+  appStore.appData.value?.blocks?.length || 0
 );
 
 async function importXML() {
@@ -71,7 +79,8 @@ async function importJSON() {
 }
 
 async function clearData() {
-  if (confirm("Are you sure you want to clear all data?")) {
+  const confirmed = await ask("Wirklich alle Daten löschen?", "Blockplaner");
+  if (confirmed) {
     await appStore.clearData();
   }
 }
@@ -79,9 +88,9 @@ async function clearData() {
 
 <template>
   <div class="import-container">
-    <h2>Daten importieren</h2>
+    <h2>{{ appStore.appData.value ? "Daten importiert" : "Daten importieren" }}</h2>
 
-    <div class="import-buttons">
+    <div class="import-buttons" v-if="!appStore.appData.value">
       <button
         @click="importXML"
         :disabled="appStore.isLoading.value"
@@ -103,15 +112,22 @@ async function clearData() {
     </div>
 
     <div v-if="appStore.appData.value && courseGroupsCount > 0" class="data-summary">
-      <h3>✓ Daten erfolgreich importiert</h3>
       <div class="summary-grid">
         <div class="summary-item">
           <strong>Kursgruppen</strong>
           <div class="count">{{ courseGroupsCount }}</div>
         </div>
         <div class="summary-item">
+          <strong>Kurse</strong>
+          <div class="count">{{ coursesCount }}</div>
+        </div>
+        <div class="summary-item">
           <strong>Schüler</strong>
           <div class="count">{{ studentsCount }}</div>
+        </div>
+        <div class="summary-item">
+          <strong>Blöcke</strong>
+          <div class="count">{{  blocksCount }}</div>
         </div>
       </div>
       <button @click="clearData" class="btn btn-secondary">
@@ -128,6 +144,7 @@ async function clearData() {
   border-radius: 8px;
   margin: 20px 0;
   background-color: #f9f9f9;
+  flex: 1;
 }
 
 .import-container h2 {

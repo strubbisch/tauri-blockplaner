@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ImportComponent from "./components/ImportComponent.vue";
 import CourseGroupsView from "./components/CourseGroupsView.vue";
-import StudentsView from "./components/StudentsView.vue";
 import { useAppStore } from "./stores/appStore";
 
 const appStore = useAppStore();
@@ -10,23 +9,12 @@ const appStore = useAppStore();
 
 <template>
   <main class="container">
-    <div class="header">
-      <h2>Blockplaner GUI</h2>
-      <p class="subtitle">Kursplanung verwalten</p>
-    </div>
 
     <ImportComponent />
 
     <div v-if="appStore.appData.value" class="data-views">
       <CourseGroupsView
         :course-groups="appStore.courseGroups.value"
-        :is-loading="appStore.isLoading.value"
-      />
-      
-      <StudentsView 
-        :students="appStore.appData.value.students"
-        :course-groups="appStore.appData.value.course_groups"
-        :courses="appStore.appData.value.courses"
         :is-loading="appStore.isLoading.value"
       />
     </div>
@@ -54,6 +42,7 @@ const appStore = useAppStore();
   display: grid;
   gap: 20px;
   margin-top: 20px;
+  flex: 1;
 }
 
 .section {
@@ -127,8 +116,8 @@ const appStore = useAppStore();
 .container {
   margin: 0;
   padding: 20px;
-  max-width: 1200px;
   margin: 0 auto;
+  display: flex;
 }
 
 a {
