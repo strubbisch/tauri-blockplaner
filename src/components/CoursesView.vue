@@ -201,42 +201,44 @@ const createCourses = async () => {
         </button>
       </div>
 
-      <form v-if="selectedCourse" class="course-form" @submit.prevent="updateSelectedCourse">
-        <h4>Kurs bearbeiten</h4>
-        <div class="meta-row"><strong>ID:</strong> {{ selectedCourse.id }}</div>
-        <div class="meta-row"><strong>Kurs:</strong> {{ getCourseGroupName(selectedCourse.course_group, courseGroups) }}-{{ selectedCourse.number }}</div>
-        <div class="meta-row"><strong>Schüler:</strong> {{ selectedCourse.students.length }}</div>
+      <div class="no-scroll">
+        <form v-if="selectedCourse" class="course-form" @submit.prevent="updateSelectedCourse">
+          <h4>Kurs bearbeiten</h4>
+          <div class="meta-row"><strong>ID:</strong> {{ selectedCourse.id }}</div>
+          <div class="meta-row"><strong>Kurs:</strong> {{ getCourseGroupName(selectedCourse.course_group, courseGroups) }}-{{ selectedCourse.number }}</div>
+          <div class="meta-row"><strong>Schüler:</strong> {{ selectedCourse.students.length }}</div>
 
-        <label class="field">
-          <span>Lehrkraft</span>
-          <input v-model="formTeacher" />
-        </label>
+          <label class="field">
+            <span>Lehrkraft</span>
+            <input v-model="formTeacher" />
+          </label>
 
-        <label class="field">
-          <span>Raum</span>
-          <input v-model="formRoom" />
-        </label>
+          <label class="field">
+            <span>Raum</span>
+            <input v-model="formRoom" />
+          </label>
 
-        <label class="field">
-          <span>Stunden/Woche</span>
-          <input v-model.number="formHoursPerWeek" type="number" min="0" step="1" required />
-        </label>
+          <label class="field">
+            <span>Stunden/Woche</span>
+            <input v-model.number="formHoursPerWeek" type="number" min="0" step="1" required />
+          </label>
 
-        <div v-if="appStore.error.value" class="alert alert-error">
-          {{ appStore.error.value }}
+          <div v-if="appStore.error.value" class="alert alert-error">
+            {{ appStore.error.value }}
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" :disabled="isLoadingState || !isDirty">
+              {{ isLoadingState ? "Aktualisiere..." : "Aktualisieren" }}
+            </button>
+            <button @click="deleteCourse">Kurs löschen</button>
+            <button @click="createParallelCourse">Parallelkurs anlegen</button>
+          </div>
+        </form>
+
+        <div v-else class="course-form-empty">
+          Kurs anklicken, um die Daten zu bearbeiten.
         </div>
-
-        <div class="form-actions">
-          <button type="submit" :disabled="isLoadingState || !isDirty">
-            {{ isLoadingState ? "Aktualisiere..." : "Aktualisieren" }}
-          </button>
-          <button @click="deleteCourse">Kurs löschen</button>
-          <button @click="createParallelCourse">Parallelkurs anlegen</button>
-        </div>
-      </form>
-
-      <div v-else class="course-form-empty">
-        Kurs anklicken, um die Daten zu bearbeiten.
       </div>
     </div>
   </div>
@@ -374,6 +376,11 @@ const createCourses = async () => {
 .course-form-empty {
   color: #666;
   font-size: 14px;
+}
+
+.no-scroll {
+  position: sticky;
+  top: 0;
 }
 
 @media (max-width: 1100px) {
