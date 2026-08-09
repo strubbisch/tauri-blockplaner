@@ -31,4 +31,8 @@
   .btn-secondary {
     @apply border-zinc-300 bg-white text-zinc-900 hover:border-blue-600 disabled:opacity-50 disabled:cursor-not-allowed;
   }
+
+  th, td {
+    @apply p-2;
+  }
 }

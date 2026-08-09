@@ -107,9 +107,8 @@ watch(
   },
 );
 
-const selectCourse = (courseId: number) => {
-  const course = props.courses.find((item) => item.id === courseId);
-  selectedCourseId.value = courseId;
+const selectCourse = (course: Course) => {
+  selectedCourseId.value = course.id;
   if (!course) {
     return;
   }
@@ -185,34 +184,30 @@ const createCourses = async () => {
     </div>
 
     <div v-else class="grid grid-cols-1 items-start gap-4 xl:grid-cols-[2fr_1fr]">
-      <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-3">
-        <button
-          v-for="course in coursesWithGroup"
-          :key="course.id"
-          :class="[
-            'rounded-md border bg-white p-3 text-left shadow-sm transition hover:shadow-md',
-            selectedCourseId === course.id ? 'border-blue-500' : 'border-zinc-300',
-          ]"
-          type="button"
-          @click="selectCourse(course.id)"
-        >
-          <div class="mb-2.5 flex items-center justify-between gap-2">
-            <h4 class="m-0 text-sm font-semibold text-blue-500">
-              {{ course.groupName }}-{{ course.number }}
-            </h4>
-            <span
-              class="whitespace-nowrap rounded-xl bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700"
-            >
-              {{ course.students.length }} Schüler
-            </span>
-          </div>
-          <div class="grid gap-1 text-[13px] text-zinc-700">
-            <div><strong>Lehrkraft:</strong> {{ course.teacher }}</div>
-            <div><strong>Raum:</strong> {{ course.room }}</div>
-            <div><strong>Stunden/Woche:</strong> {{ course.hours_per_week }}</div>
-          </div>
-        </button>
-      </div>
+      <table class="border-collapse w-full text-left">
+        <thead class="border-b border-gray-300">
+          <tr>
+            <th>Kurs</th>
+            <th>Wochenstunden</th>
+            <th>Lehrer</th>
+            <th>Raum</th>
+            <th>Anzahl Schüler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="course in coursesWithGroup" class="even:bg-gray-200 cursor-pointer"
+            :key="course.id"
+            @click="selectCourse(course)"
+          >
+            <td>{{ course.groupName }}-{{ course.number }}</td>
+            <td>{{ course.hours_per_week }}</td>
+            <td>{{ course.teacher }}</td>
+            <td>{{ course.room }}</td>
+            <td>{{ course.students.length }}</td>
+          </tr>
+        </tbody>
+      </table>
 
       <div class="sticky top-0">
         <form
