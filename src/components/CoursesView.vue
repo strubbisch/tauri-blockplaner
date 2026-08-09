@@ -178,7 +178,7 @@ const createCourses = async () => {
       <p>Bisher keine Kurse importiert.</p>
       <button
         @click="createCourses"
-        class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-5 py-2.5 text-sm font-medium text-zinc-900 shadow transition hover:border-blue-600"
+        class="btn-primary"
       >
         Kurse erstellen
       </button>
@@ -267,19 +267,19 @@ const createCourses = async () => {
             <button
               type="submit"
               :disabled="isLoadingState || !isDirty"
-              class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium shadow transition hover:border-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
+              class="btn btn-primary"
             >
               {{ isLoadingState ? "Aktualisiere..." : "Aktualisieren" }}
             </button>
             <button
               @click="deleteCourse"
-              class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium shadow transition hover:border-blue-600"
+              class="btn btn-primary"
             >
               Kurs löschen
             </button>
             <button
               @click="createParallelCourse"
-              class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium shadow transition hover:border-blue-600"
+              class="btn btn-primary"
             >
               Parallelkurs anlegen
             </button>
