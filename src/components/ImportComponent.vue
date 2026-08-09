@@ -87,10 +87,12 @@ async function clearData() {
 </script>
 
 <template>
-  <div class="import-container">
-    <h2>{{ appStore.appData.value ? "Daten importiert" : "Daten importieren" }}</h2>
+  <div class="my-5 flex-1 rounded-lg border border-zinc-300 bg-zinc-50 p-5">
+    <h2 class="mt-0 text-center text-2xl font-semibold text-zinc-800">
+      {{ appStore.appData.value ? "Daten importiert" : "Daten importieren" }}
+    </h2>
 
-    <div class="import-buttons" v-if="!appStore.appData.value">
+    <div v-if="!appStore.appData.value" class="my-4 flex flex-wrap gap-2.5">
       <button
         @click="importXML"
         :disabled="appStore.isLoading.value"
@@ -107,174 +109,41 @@ async function clearData() {
       </button>
     </div>
 
-    <div v-if="appStore.error.value" class="alert alert-error">
+    <div
+      v-if="appStore.error.value"
+      class="my-2.5 rounded border border-red-300 bg-red-100 p-3 text-sm text-red-900"
+    >
       {{ appStore.error.value }}
     </div>
 
-    <div v-if="appStore.appData.value && courseGroupsCount > 0" class="data-summary">
-      <div class="summary-grid">
-        <div class="summary-item">
+    <div
+      v-if="appStore.appData.value && courseGroupsCount > 0"
+      class="mt-5 rounded border-2 border-green-200 bg-white p-4"
+    >
+      <div class="mb-4 grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-4">
+        <div class="text-center">
           <strong>Kursgruppen</strong>
-          <div class="count">{{ courseGroupsCount }}</div>
+          <div class="text-3xl font-bold text-blue-500">{{ courseGroupsCount }}</div>
         </div>
-        <div class="summary-item">
+        <div class="text-center">
           <strong>Kurse</strong>
-          <div class="count">{{ coursesCount }}</div>
+          <div class="text-3xl font-bold text-blue-500">{{ coursesCount }}</div>
         </div>
-        <div class="summary-item">
+        <div class="text-center">
           <strong>Schüler</strong>
-          <div class="count">{{ studentsCount }}</div>
+          <div class="text-3xl font-bold text-blue-500">{{ studentsCount }}</div>
         </div>
-        <div class="summary-item">
+        <div class="text-center">
           <strong>Blöcke</strong>
-          <div class="count">{{  blocksCount }}</div>
+          <div class="text-3xl font-bold text-blue-500">{{ blocksCount }}</div>
         </div>
       </div>
-      <button @click="clearData" class="btn btn-secondary">
+      <button
+        @click="clearData"
+        class="mt-2.5 cursor-pointer rounded border border-zinc-600 bg-zinc-500 px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-zinc-600"
+      >
         Lösche alle Daten
       </button>
     </div>
   </div>
 </template>
-
-<style scoped>
-.import-container {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin: 20px 0;
-  background-color: #f9f9f9;
-  flex: 1;
-}
-
-.import-container h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.import-buttons {
-  display: flex;
-  gap: 10px;
-  margin: 15px 0;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
-  margin-top: 10px;
-}
-
-.btn-secondary:hover:not(:disabled) {
-  background-color: #5a6268;
-}
-
-.alert {
-  padding: 12px;
-  border-radius: 4px;
-  margin: 10px 0;
-  font-size: 14px;
-}
-
-.alert-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-.data-summary {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: white;
-  border: 2px solid #d4edda;
-  border-radius: 4px;
-}
-
-.data-summary h3 {
-  margin-top: 0;
-  color: #155724;
-}
-
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.summary-item {
-  text-align: center;
-}
-
-.summary-item strong {
-  display: block;
-  font-size: 12px;
-  color: #555;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-.count {
-  font-size: 28px;
-  font-weight: bold;
-  color: #007bff;
-}
-
-@media (prefers-color-scheme: dark) {
-  .import-container {
-    background-color: #2f2f2f;
-    border-color: #444;
-  }
-
-  .import-container h2 {
-    color: #f6f6f6;
-  }
-
-  .data-summary {
-    background-color: #1a1a1a;
-    border-color: #1a3a1a;
-  }
-
-  .data-summary h3 {
-    color: #7dff7d;
-  }
-
-  .summary-item strong {
-    color: #aaa;
-  }
-
-  .count {
-    color: #5ba3ff;
-  }
-
-  .alert-error {
-    background-color: #3d2c2c;
-    color: #f8d7da;
-    border-color: #5a4141;
-  }
-}
-</style>

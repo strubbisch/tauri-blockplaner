@@ -23,35 +23,47 @@ const getCourseName = (courseId: number, courses: Course[] = [], courseGroups: C
 </script>
 
 <template>
-  <div class="students-view">
-    <h3>Schüler</h3>
+  <div class="rounded-lg bg-zinc-50 p-5">
+    <h3 class="mt-0 text-xl font-semibold text-zinc-800">Schüler</h3>
     
-    <div v-if="isLoading" class="loading">Loading...</div>
+    <div v-if="isLoading" class="p-5 text-center text-sm text-zinc-600">Loading...</div>
     
-    <div v-else-if="!students || students.length === 0" class="empty">
+    <div v-else-if="!students || students.length === 0" class="p-5 text-center text-sm text-zinc-600">
       <p>Bisher keine Schüler importiert.</p>
     </div>
     
-    <div v-else class="students-list">
-      <div v-for="student in students" :key="student.id" class="student-card">
-        <div class="student-header">
-          <h4>{{ student.name }}</h4>
-          <span class="student-id">ID: {{ student.id }}</span>
+    <div v-else class="flex flex-col gap-3">
+      <div
+        v-for="student in students"
+        :key="student.id"
+        class="rounded-md border border-zinc-300 bg-white p-3 shadow-sm transition hover:shadow-md"
+      >
+        <div class="mb-2.5 flex items-center justify-between border-b border-zinc-200 pb-2">
+          <h4 class="m-0 text-sm font-semibold text-zinc-800">{{ student.name }}</h4>
+          <span class="text-xs text-zinc-500">ID: {{ student.id }}</span>
         </div>
         
-        <div v-if="student.choices && student.choices.length > 0" class="student-choices">
-          <div class="label">gewählte Kurse:</div>
-          <div class="choice-list">
-            <span v-for="choiceId in student.choices" :key="choiceId" class="choice-tag">
+        <div v-if="student.choices && student.choices.length > 0" class="mt-2">
+          <div class="mb-1 text-xs font-semibold uppercase text-zinc-600">gewählte Kurse:</div>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              v-for="choiceId in student.choices"
+              :key="choiceId"
+              class="rounded bg-blue-100 px-2 py-1 text-xs text-blue-700"
+            >
               {{ getCourseGroupName(choiceId, courseGroups) }}
             </span>
           </div>
         </div>
         
-        <div v-if="student.courses && student.courses.length > 0" class="student-courses">
-          <div class="label">zugeordnete Kurse:</div>
-          <div class="course-list">
-            <span v-for="courseId in student.courses" :key="courseId" class="course-tag">
+        <div v-if="student.courses && student.courses.length > 0" class="mt-2">
+          <div class="mb-1 text-xs font-semibold uppercase text-zinc-600">zugeordnete Kurse:</div>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              v-for="courseId in student.courses"
+              :key="courseId"
+              class="rounded bg-green-100 px-2 py-1 text-xs text-green-700"
+            >
               {{ getCourseName(courseId, courses, courseGroups) }}
             </span>
           </div>
@@ -60,147 +72,3 @@ const getCourseName = (courseId: number, courses: Course[] = [], courseGroups: C
     </div>
   </div>
 </template>
-
-<style scoped>
-.students-view {
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.students-view h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.loading,
-.empty {
-  padding: 20px;
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-}
-
-.students-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.student-card {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
-}
-
-.student-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.student-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-}
-
-.student-header h4 {
-  margin: 0;
-  color: #333;
-  font-size: 15px;
-}
-
-.student-id {
-  font-size: 12px;
-  color: #999;
-}
-
-.label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #666;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
-
-.choice-list,
-.course-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.choice-tag,
-.course-tag {
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background-color: #e7f3ff;
-  color: #0056b3;
-}
-
-.course-tag {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.choice-tag.more {
-  background-color: #f0f0f0;
-  color: #666;
-}
-
-.student-choices,
-.student-courses {
-  margin-top: 8px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .students-view {
-    background-color: #2f2f2f;
-  }
-
-  .students-view h3 {
-    color: #f6f6f6;
-  }
-
-  .student-card {
-    background-color: #1a1a1a;
-    border-color: #444;
-  }
-
-  .student-header {
-    border-bottom-color: #333;
-  }
-
-  .student-header h4 {
-    color: #f6f6f6;
-  }
-
-  .student-id,
-  .label,
-  .empty,
-  .loading {
-    color: #aaa;
-  }
-
-  .choice-tag {
-    background-color: #1a3a4d;
-    color: #7dc5ff;
-  }
-
-  .course-tag {
-    background-color: #1a3a1a;
-    color: #7dff7d;
-  }
-
-  .choice-tag.more {
-    background-color: #333;
-    color: #ccc;
-  }
-}
-</style>

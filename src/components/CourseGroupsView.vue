@@ -10,120 +10,31 @@ defineProps<Props>();
 </script>
 
 <template>
-  <div class="course-groups-view">
-    <h3>Kursgruppen</h3>
+  <div class="rounded-lg bg-zinc-50 p-5">
+    <h3 class="mt-0 text-center text-xl font-semibold text-zinc-800">Kursgruppen</h3>
     
-    <div v-if="isLoading" class="loading">Loading...</div>
+    <div v-if="isLoading" class="p-5 text-center text-sm text-zinc-600">Loading...</div>
     
-    <div v-else-if="courseGroups.length === 0" class="empty">
+    <div v-else-if="courseGroups.length === 0" class="p-5 text-center text-sm text-zinc-600">
       <p>Bisher keine Kursgruppen importiert.</p>
     </div>
     
-    <div v-else class="groups-grid">
-      <div v-for="group in courseGroups" :key="group.id" class="group-card">
-        <div class="group-header">
-          <h4>{{ group.subject }}</h4>
-          <span class="group-type">{{ group.course_type }}</span>
+    <div v-else class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-3">
+      <div
+        v-for="group in courseGroups"
+        :key="group.id"
+        class="rounded-md border border-zinc-300 bg-white p-3 shadow-sm transition hover:shadow-md"
+      >
+        <div class="mb-2 flex items-center justify-between">
+          <h4 class="m-0 text-sm font-semibold text-blue-500">{{ group.subject }}</h4>
+          <span
+            class="rounded-xl bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700"
+          >
+            {{ group.course_type }}
+          </span>
         </div>
-        <div class="students-count">Anzahl Schüler: {{ group.students_count }}</div>
+        <div class="text-xs text-zinc-500">Anzahl Schüler: {{ group.students_count }}</div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.course-groups-view {
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.course-groups-view h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.loading,
-.empty {
-  padding: 20px;
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-}
-
-.groups-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-}
-
-.group-card {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
-}
-
-.group-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.group-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.group-header h4 {
-  margin: 0;
-  color: #007bff;
-  font-size: 15px;
-}
-
-.group-type {
-  background-color: #e7f3ff;
-  color: #0056b3;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.students-count {
-  font-size: 12px;
-  color: #999;
-}
-
-@media (prefers-color-scheme: dark) {
-  .course-groups-view {
-    background-color: #2f2f2f;
-  }
-
-  .course-groups-view h3 {
-    color: #f6f6f6;
-  }
-
-  .group-card {
-    background-color: #1a1a1a;
-    border-color: #444;
-  }
-
-  .group-header h4 {
-    color: #5ba3ff;
-  }
-
-  .group-type {
-    background-color: #1a3a4d;
-    color: #7dc5ff;
-  }
-
-  .group-id,
-  .empty,
-  .loading {
-    color: #aaa;
-  }
-}
-</style>

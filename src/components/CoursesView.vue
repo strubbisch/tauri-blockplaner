@@ -169,31 +169,44 @@ const createCourses = async () => {
 </script>
 
 <template>
-  <div class="courses-view">
-    <h3>Kurse</h3>
+  <div class="flex flex-col gap-4 rounded-lg bg-zinc-50 p-5">
+    <h3 class="m-0 text-center text-xl font-semibold text-zinc-800">Kurse</h3>
 
-    <div v-if="isLoading" class="loading">Loading...</div>
+    <div v-if="isLoading" class="p-5 text-center text-sm text-zinc-600">Loading...</div>
 
-    <div v-else-if="courses.length === 0" class="empty">
+    <div v-else-if="courses.length === 0" class="p-5 text-center text-sm text-zinc-600">
       <p>Bisher keine Kurse importiert.</p>
-      <button @click="createCourses">Kurse erstellen</button>
+      <button
+        @click="createCourses"
+        class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-5 py-2.5 text-sm font-medium text-zinc-900 shadow transition hover:border-blue-600"
+      >
+        Kurse erstellen
+      </button>
     </div>
 
-    <div v-else class="courses-content">
-      <div class="courses-grid">
+    <div v-else class="grid grid-cols-1 items-start gap-4 xl:grid-cols-[2fr_1fr]">
+      <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-3">
         <button
           v-for="course in coursesWithGroup"
           :key="course.id"
-          class="course-card"
-          :class="{ selected: selectedCourseId === course.id }"
+          :class="[
+            'rounded-md border bg-white p-3 text-left shadow-sm transition hover:shadow-md',
+            selectedCourseId === course.id ? 'border-blue-500' : 'border-zinc-300',
+          ]"
           type="button"
           @click="selectCourse(course.id)"
         >
-          <div class="course-header">
-            <h4>{{ course.groupName }}-{{ course.number }}</h4>
-            <span class="students-count">{{ course.students.length }} Schüler</span>
+          <div class="mb-2.5 flex items-center justify-between gap-2">
+            <h4 class="m-0 text-sm font-semibold text-blue-500">
+              {{ course.groupName }}-{{ course.number }}
+            </h4>
+            <span
+              class="whitespace-nowrap rounded-xl bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700"
+            >
+              {{ course.students.length }} Schüler
+            </span>
           </div>
-          <div class="course-meta">
+          <div class="grid gap-1 text-[13px] text-zinc-700">
             <div><strong>Lehrkraft:</strong> {{ course.teacher }}</div>
             <div><strong>Raum:</strong> {{ course.room }}</div>
             <div><strong>Stunden/Woche:</strong> {{ course.hours_per_week }}</div>
@@ -201,239 +214,82 @@ const createCourses = async () => {
         </button>
       </div>
 
-      <div class="no-scroll">
-        <form v-if="selectedCourse" class="course-form" @submit.prevent="updateSelectedCourse">
-          <h4>Kurs bearbeiten</h4>
-          <div class="meta-row"><strong>ID:</strong> {{ selectedCourse.id }}</div>
-          <div class="meta-row"><strong>Kurs:</strong> {{ getCourseGroupName(selectedCourse.course_group, courseGroups) }}-{{ selectedCourse.number }}</div>
-          <div class="meta-row"><strong>Schüler:</strong> {{ selectedCourse.students.length }}</div>
+      <div class="sticky top-0">
+        <form
+          v-if="selectedCourse"
+          class="rounded-lg border border-zinc-300 bg-white p-3.5"
+          @submit.prevent="updateSelectedCourse"
+        >
+          <h4 class="mb-3 mt-0 text-base font-semibold">Kurs bearbeiten</h4>
+          <div class="mb-2 text-[13px]"><strong>ID:</strong> {{ selectedCourse.id }}</div>
+          <div class="mb-2 text-[13px]">
+            <strong>Kurs:</strong>
+            {{ getCourseGroupName(selectedCourse.course_group, courseGroups) }}-{{ selectedCourse.number }}
+          </div>
+          <div class="mb-2 text-[13px]"><strong>Schüler:</strong> {{ selectedCourse.students.length }}</div>
 
-          <label class="field">
+          <label class="mb-2.5 grid gap-1 text-[13px]">
             <span>Lehrkraft</span>
-            <input v-model="formTeacher" />
+            <input
+              v-model="formTeacher"
+              class="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none shadow focus:border-blue-600"
+            />
           </label>
 
-          <label class="field">
+          <label class="mb-2.5 grid gap-1 text-[13px]">
             <span>Raum</span>
-            <input v-model="formRoom" />
+            <input
+              v-model="formRoom"
+              class="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none shadow focus:border-blue-600"
+            />
           </label>
 
-          <label class="field">
+          <label class="mb-2.5 grid gap-1 text-[13px]">
             <span>Stunden/Woche</span>
-            <input v-model.number="formHoursPerWeek" type="number" min="0" step="1" required />
+            <input
+              v-model.number="formHoursPerWeek"
+              type="number"
+              min="0"
+              step="1"
+              required
+              class="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none shadow focus:border-blue-600"
+            />
           </label>
 
-          <div v-if="appStore.error.value" class="alert alert-error">
+          <div
+            v-if="appStore.error.value"
+            class="mt-2.5 rounded border border-red-300 bg-red-100 p-2.5 text-[13px] text-red-900"
+          >
             {{ appStore.error.value }}
           </div>
 
-          <div class="form-actions">
-            <button type="submit" :disabled="isLoadingState || !isDirty">
+          <div class="mt-3 flex gap-2">
+            <button
+              type="submit"
+              :disabled="isLoadingState || !isDirty"
+              class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium shadow transition hover:border-blue-600 disabled:cursor-not-allowed disabled:opacity-60"
+            >
               {{ isLoadingState ? "Aktualisiere..." : "Aktualisieren" }}
             </button>
-            <button @click="deleteCourse">Kurs löschen</button>
-            <button @click="createParallelCourse">Parallelkurs anlegen</button>
+            <button
+              @click="deleteCourse"
+              class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium shadow transition hover:border-blue-600"
+            >
+              Kurs löschen
+            </button>
+            <button
+              @click="createParallelCourse"
+              class="cursor-pointer rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-medium shadow transition hover:border-blue-600"
+            >
+              Parallelkurs anlegen
+            </button>
           </div>
         </form>
 
-        <div v-else class="course-form-empty">
+        <div v-else class="rounded-lg border border-zinc-300 bg-white p-3.5 text-sm text-zinc-600">
           Kurs anklicken, um die Daten zu bearbeiten.
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.courses-view {
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.courses-view h3 {
-  margin: 0;
-  color: #333;
-  text-align: center;
-}
-
-.loading,
-.empty {
-  padding: 20px;
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-}
-
-.courses-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 12px;
-}
-
-.course-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
-  text-align: left;
-}
-
-.course-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.course-card.selected {
-  border-color: #007bff;
-}
-
-.course-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.course-header h4 {
-  margin: 0;
-  color: #007bff;
-  font-size: 15px;
-}
-
-.students-count {
-  background-color: #e7f3ff;
-  color: #0056b3;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.course-meta {
-  display: grid;
-  gap: 4px;
-  font-size: 13px;
-  color: #444;
-}
-
-.course-form,
-.course-form-empty {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 14px;
-}
-
-.course-form h4 {
-  margin: 0 0 12px 0;
-}
-
-.meta-row {
-  font-size: 13px;
-  margin-bottom: 8px;
-}
-
-.field {
-  display: grid;
-  gap: 4px;
-  margin-bottom: 10px;
-  font-size: 13px;
-}
-
-.form-actions {
-  margin-top: 12px;
-  display: flex;
-  gap: 8px;
-}
-
-.alert {
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.alert-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-.course-form-empty {
-  color: #666;
-  font-size: 14px;
-}
-
-.no-scroll {
-  position: sticky;
-  top: 0;
-}
-
-@media (max-width: 1100px) {
-  .courses-content {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .courses-view {
-    background-color: #2f2f2f;
-  }
-
-  .courses-view h3 {
-    color: #f6f6f6;
-  }
-
-  .course-card {
-    background-color: #1a1a1a;
-    border-color: #444;
-  }
-
-  .course-card.selected {
-    border-color: #388bfd;
-  }
-
-  .course-header h4 {
-    color: #5ba3ff;
-  }
-
-  .students-count {
-    background-color: #1a3a4d;
-    color: #7dc5ff;
-  }
-
-  .course-meta,
-  .meta-row,
-  .course-form-empty,
-  .empty,
-  .loading {
-    color: #aaa;
-  }
-
-  .course-form,
-  .course-form-empty {
-    background-color: #1a1a1a;
-    border-color: #444;
-  }
-
-  .alert-error {
-    background-color: #3d2c2c;
-    color: #f8d7da;
-    border-color: #5a4141;
-  }
-}
-</style>
