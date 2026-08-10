@@ -196,7 +196,7 @@ const createCourses = async () => {
         </thead>
         <tbody>
           <tr
-            v-for="course in coursesWithGroup" class="even:bg-gray-200 cursor-pointer"
+            v-for="course in coursesWithGroup" class="even:bg-gray-200 cursor-pointer hover:bg-blue-100"
             :key="course.id"
             @click="selectCourse(course)"
           >
