@@ -112,11 +112,9 @@ const exportJSON = async (filePath: String) => {
   try {
     isLoading.value = true;
     error.value = null;
-    console.log("[DEBUG] Starting export to:", filePath);
-    const result = await invoke("export_json", {
+    await invoke("export_json", {
       filePath: filePath,
     });
-    console.log("[DEBUG] Export completed successfully, result:", result);
   } catch (err) {
     console.error("[ERROR] Export failed:", err);
     error.value = `${err}`;

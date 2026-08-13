@@ -45,13 +45,7 @@ pub fn create_parallel_course(
 ) -> Result<AppData, String> {
     let mut app_data = app_state.app_data.lock().unwrap();
 
-    let next_id = app_data
-        .courses
-        .iter()
-        .map(|c| c.id)
-        .max()
-        .unwrap_or(0)
-        + 1;
+    let next_id = app_data.courses.iter().map(|c| c.id).max().unwrap_or(0) + 1;
     let parallel_number = app_data
         .courses
         .iter()
@@ -75,10 +69,10 @@ pub fn create_parallel_course(
 #[tauri::command]
 pub fn delete_course(
     course_group_id: usize,
-    app_state: tauri::State<AppState>
+    app_state: tauri::State<AppState>,
 ) -> Result<AppData, String> {
     let mut app_data = app_state.app_data.lock().unwrap();
-    
+
     let index = app_data
         .courses
         .iter()
@@ -93,7 +87,11 @@ pub fn delete_course(
 pub fn create_courses(app_state: tauri::State<AppState>) -> Result<AppData, String> {
     let mut app_data = app_state.app_data.lock().unwrap();
 
-    let courses = blockplaner_core::model::course::create_courses(&app_data.course_groups, app_data.max_students_per_course, &app_data.students);
+    let courses = blockplaner_core::model::course::create_courses(
+        &app_data.course_groups,
+        app_data.max_students_per_course,
+        &app_data.students,
+    );
     app_data.courses = courses;
     Ok(app_data.clone())
 }
