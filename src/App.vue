@@ -4,9 +4,10 @@ import ImportComponent from "./components/ImportComponent.vue";
 import CourseGroupsView from "./components/CourseGroupsView.vue";
 import CoursesView from "./components/CoursesView.vue";
 import { useAppStore } from "./stores/appStore";
+import SettingsView from "./components/SettingsView.vue";
 
 const appStore = useAppStore();
-const activeView = ref<"overview" | "courses">("overview");
+const activeView = ref<"overview" | "courses" | "settings">("overview");
 
 </script>
 
@@ -38,6 +39,17 @@ const activeView = ref<"overview" | "courses">("overview");
         >
           Kurse
         </button>
+        <button
+          :class="[
+            'btn',
+            activeView === 'settings'
+              ? 'btn-primary'
+              : 'btn-secondary',
+          ]"
+          @click="activeView = 'settings'"
+        >
+          Einstellungen
+        </button>
       </nav>
 
       <div v-if="activeView === 'overview'" class="flex gap-5">
@@ -54,6 +66,10 @@ const activeView = ref<"overview" | "courses">("overview");
         :courses="appStore.appData.value.courses"
         :course-groups="appStore.appData.value.course_groups"
         :is-loading="appStore.isLoading.value"
+      />
+      <SettingsView
+        v-else-if="activeView === 'settings'"
+        class="flex-1"
       />
     </div>
   </main>

@@ -177,7 +177,7 @@ const createCourses = async () => {
       <p>Bisher keine Kurse importiert.</p>
       <button
         @click="createCourses"
-        class="btn-primary"
+        class="btn btn-primary"
       >
         Kurse erstellen
       </button>
