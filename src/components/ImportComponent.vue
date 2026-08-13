@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { open, ask } from "@tauri-apps/plugin-dialog";
+import { open, ask, save } from "@tauri-apps/plugin-dialog";
 import { useAppStore } from "../stores/appStore";
 
 const appStore = useAppStore();
@@ -78,6 +78,25 @@ async function importJSON() {
   }
 }
 
+async function exportJSON() {
+  try {
+    const selectedPath = await save({
+      filters: [
+        {
+          name: "JSON-Datei",
+          extensions: ["json"]
+        },
+      ],
+    });
+    if (!selectedPath) {
+      return;
+    }
+    await appStore.exportJSON(selectedPath);
+  } catch (err) {
+    console.error("Fehler beim Exportieren der Daten in JSON:", err)
+  }
+}
+
 async function clearData() {
   const confirmed = await ask("Wirklich alle Daten löschen?", "Blockplaner");
   if (confirmed) {
@@ -138,12 +157,25 @@ async function clearData() {
           <div class="text-3xl font-bold text-blue-500">{{ blocksCount }}</div>
         </div>
       </div>
-      <button
-        @click="clearData"
-        class="mt-2.5 cursor-pointer rounded border border-zinc-600 bg-zinc-500 px-5 py-2.5 text-sm font-medium text-white shadow transition hover:bg-zinc-600"
-      >
-        Lösche alle Daten
-      </button>
+      <div class="flex gap-4">
+        <button
+          @click="clearData"
+          class="btn btn-secondary"
+        >
+          Lösche alle Daten
+        </button>
+        <button
+          class="btn btn-secondary"
+          @click="exportJSON"
+          >
+          Exportiere JSON
+        </button>
+        <button
+          class="btn btn-secondary"
+          >
+          Exportiere PDF
+        </button>
+      </div>
     </div>
   </div>
 </template>

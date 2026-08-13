@@ -108,6 +108,22 @@ const importJSON = async (filePath: string) => {
   }
 };
 
+const exportJSON = async (filePath: String) => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    await invoke("export_json", {
+      filePath: filePath,
+    });
+  } catch (err) {
+    error.value = `${err}`;
+    console.error(err);
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+}
+
 const clearData = async () => {
   try {
     isLoading.value = true;
@@ -216,4 +232,5 @@ export const useAppStore = () => ({
   createParallelCourse,
   deleteCourse,
   createCourses,
+  exportJSON,
 });

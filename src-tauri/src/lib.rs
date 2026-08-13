@@ -1,6 +1,7 @@
 mod import;
 mod state;
 mod course;
+mod export;
 
 use blockplaner_core::data::AppData;
 use state::AppState;
@@ -43,6 +44,7 @@ pub fn run() {
             course::create_parallel_course,
             course::delete_course,
             course::create_courses,
+            export::export_json,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

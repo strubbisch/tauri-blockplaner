@@ -1,0 +1,3652 @@
+{
+  "course_groups": [
+    {
+      "id": 0,
+      "subject": "BK",
+      "course_type": "GK"
+    },
+    {
+      "id": 1,
+      "subject": "Bio",
+      "course_type": "LK"
+    },
+    {
+      "id": 2,
+      "subject": "Bio",
+      "course_type": "GK"
+    },
+    {
+      "id": 3,
+      "subject": "Ch",
+      "course_type": "LK"
+    },
+    {
+      "id": 4,
+      "subject": "Ch",
+      "course_type": "GK"
+    },
+    {
+      "id": 5,
+      "subject": "D",
+      "course_type": "LK"
+    },
+    {
+      "id": 6,
+      "subject": "D",
+      "course_type": "GK"
+    },
+    {
+      "id": 7,
+      "subject": "E",
+      "course_type": "LK"
+    },
+    {
+      "id": 8,
+      "subject": "E",
+      "course_type": "GK"
+    },
+    {
+      "id": 9,
+      "subject": "Ek",
+      "course_type": "LK"
+    },
+    {
+      "id": 10,
+      "subject": "Eth",
+      "course_type": "GK"
+    },
+    {
+      "id": 11,
+      "subject": "F",
+      "course_type": "LK"
+    },
+    {
+      "id": 12,
+      "subject": "F",
+      "course_type": "GK"
+    },
+    {
+      "id": 13,
+      "subject": "G",
+      "course_type": "LK"
+    },
+    {
+      "id": 14,
+      "subject": "G",
+      "course_type": "GK"
+    },
+    {
+      "id": 15,
+      "subject": "GEk",
+      "course_type": "GK"
+    },
+    {
+      "id": 16,
+      "subject": "Inf",
+      "course_type": "GK"
+    },
+    {
+      "id": 17,
+      "subject": "L",
+      "course_type": "LK"
+    },
+    {
+      "id": 18,
+      "subject": "L",
+      "course_type": "GK"
+    },
+    {
+      "id": 19,
+      "subject": "L-neu",
+      "course_type": "GK"
+    },
+    {
+      "id": 20,
+      "subject": "M",
+      "course_type": "LK"
+    },
+    {
+      "id": 21,
+      "subject": "M",
+      "course_type": "GK"
+    },
+    {
+      "id": 22,
+      "subject": "Mu",
+      "course_type": "GK"
+    },
+    {
+      "id": 23,
+      "subject": "Ph",
+      "course_type": "LK"
+    },
+    {
+      "id": 24,
+      "subject": "Ph",
+      "course_type": "GK"
+    },
+    {
+      "id": 25,
+      "subject": "RelEv",
+      "course_type": "GK"
+    },
+    {
+      "id": 26,
+      "subject": "RelRk",
+      "course_type": "GK"
+    },
+    {
+      "id": 27,
+      "subject": "Sk",
+      "course_type": "LK"
+    },
+    {
+      "id": 28,
+      "subject": "SkEk",
+      "course_type": "GK"
+    },
+    {
+      "id": 29,
+      "subject": "SkG",
+      "course_type": "GK"
+    },
+    {
+      "id": 30,
+      "subject": "Sp",
+      "course_type": "LK"
+    },
+    {
+      "id": 31,
+      "subject": "Sp",
+      "course_type": "GK"
+    }
+  ],
+  "courses": [
+    {
+      "course_group": 0,
+      "number": 1,
+      "teacher": "DO",
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        17,
+        2,
+        11,
+        53,
+        50,
+        9,
+        8,
+        39,
+        52,
+        47,
+        44,
+        22,
+        32,
+        40,
+        21,
+        10,
+        30,
+        3,
+        24,
+        37,
+        46
+      ],
+      "id": 0
+    },
+    {
+      "course_group": 0,
+      "number": 2,
+      "teacher": "DO",
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        6,
+        33,
+        26,
+        12,
+        20,
+        15,
+        16,
+        18,
+        54,
+        45,
+        29,
+        42,
+        25,
+        23,
+        1,
+        38,
+        7,
+        34
+      ],
+      "id": 1
+    },
+    {
+      "course_group": 1,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        5,
+        25,
+        16,
+        13,
+        42,
+        14,
+        7,
+        0,
+        12,
+        29,
+        41,
+        38,
+        31,
+        51,
+        48,
+        54,
+        1,
+        36
+      ],
+      "id": 2
+    },
+    {
+      "course_group": 1,
+      "number": 2,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        11,
+        39,
+        44,
+        17,
+        52,
+        8,
+        37,
+        30,
+        32,
+        50,
+        22,
+        40,
+        47,
+        2,
+        24,
+        3,
+        10,
+        46
+      ],
+      "id": 3
+    },
+    {
+      "course_group": 2,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        27,
+        43,
+        15,
+        20,
+        23,
+        33,
+        49,
+        26,
+        6,
+        45,
+        19,
+        18
+      ],
+      "id": 4
+    },
+    {
+      "course_group": 3,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        21,
+        33
+      ],
+      "id": 5
+    },
+    {
+      "course_group": 4,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        36,
+        32,
+        1,
+        9,
+        46,
+        14,
+        51,
+        53,
+        44,
+        4,
+        16,
+        34
+      ],
+      "id": 6
+    },
+    {
+      "course_group": 5,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        19,
+        7,
+        20,
+        6,
+        11,
+        18,
+        41,
+        23,
+        3,
+        46,
+        13,
+        12,
+        38,
+        1,
+        27,
+        4
+      ],
+      "id": 7
+    },
+    {
+      "course_group": 6,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        30,
+        35,
+        14,
+        43,
+        28,
+        33,
+        49,
+        24,
+        0,
+        5,
+        53,
+        31,
+        47,
+        9,
+        15,
+        45,
+        34
+      ],
+      "id": 8
+    },
+    {
+      "course_group": 6,
+      "number": 2,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        39,
+        17,
+        36,
+        52,
+        32,
+        22,
+        37,
+        29,
+        48,
+        10,
+        2,
+        26,
+        25,
+        51,
+        44,
+        21,
+        42,
+        40,
+        8,
+        50,
+        54,
+        16
+      ],
+      "id": 9
+    },
+    {
+      "course_group": 7,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        15,
+        51,
+        42,
+        31,
+        25,
+        29,
+        18,
+        4,
+        16,
+        21,
+        23,
+        48,
+        20,
+        0
+      ],
+      "id": 10
+    },
+    {
+      "course_group": 7,
+      "number": 2,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        14,
+        47,
+        30,
+        50,
+        40,
+        32,
+        45,
+        37,
+        9,
+        35,
+        26,
+        8,
+        17,
+        22,
+        10,
+        52,
+        39,
+        2,
+        44
+      ],
+      "id": 11
+    },
+    {
+      "course_group": 8,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        46,
+        41,
+        19,
+        24,
+        33,
+        3,
+        6,
+        11,
+        38,
+        5,
+        43,
+        49,
+        54,
+        28,
+        12,
+        27,
+        7,
+        1,
+        34
+      ],
+      "id": 12
+    },
+    {
+      "course_group": 9,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 4,
+      "students": [
+        24,
+        20,
+        50,
+        16,
+        25,
+        0,
+        17,
+        45,
+        51,
+        44,
+        10,
+        39,
+        40,
+        33,
+        8,
+        54,
+        22
+      ],
+      "id": 13
+    },
+    {
+      "course_group": 10,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        34,
+        10,
+        28,
+        53,
+        14,
+        21,
+        17,
+        33,
+        13,
+        0,
+        4,
+        2,
+        16,
+        3,
+        51
+      ],
+      "id": 14
+    },
+    {
+      "course_group": 11,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        6,
+        34,
+        7
+      ],
+      "id": 15
+    },
+    {
+      "course_group": 12,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        23,
+        25,
+        29,
+        30,
+        0,
+        11,
+        22,
+        38
+      ],
+      "id": 16
+    },
+    {
+      "course_group": 13,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 4,
+      "students": [
+        3,
+        46,
+        36,
+        43,
+        47,
+        2,
+        53,
+        21,
+        14,
+        18,
+        5,
+        1,
+        52
+      ],
+      "id": 17
+    },
+    {
+      "course_group": 14,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        12,
+        35,
+        30,
+        32,
+        6,
+        19,
+        34,
+        38,
+        7,
+        42,
+        37,
+        13,
+        41,
+        29,
+        27,
+        48,
+        11,
+        9,
+        31
+      ],
+      "id": 18
+    },
+    {
+      "course_group": 15,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        15,
+        23,
+        28,
+        4,
+        26,
+        49
+      ],
+      "id": 19
+    },
+    {
+      "course_group": 16,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        33,
+        21,
+        31,
+        35,
+        53
+      ],
+      "id": 20
+    },
+    {
+      "course_group": 17,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        53,
+        5,
+        9,
+        54,
+        13,
+        36
+      ],
+      "id": 21
+    },
+    {
+      "course_group": 18,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        47,
+        2,
+        18,
+        39,
+        3,
+        20
+      ],
+      "id": 22
+    },
+    {
+      "course_group": 19,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        10,
+        45,
+        17,
+        28
+      ],
+      "id": 23
+    },
+    {
+      "course_group": 20,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        45,
+        43,
+        35,
+        34,
+        30,
+        9,
+        28,
+        15,
+        49,
+        33,
+        24,
+        53,
+        6
+      ],
+      "id": 24
+    },
+    {
+      "course_group": 21,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        46,
+        0,
+        18,
+        19,
+        23,
+        31,
+        14,
+        4,
+        13,
+        38,
+        12,
+        3,
+        20,
+        1,
+        41,
+        27,
+        7,
+        11,
+        47,
+        5
+      ],
+      "id": 25
+    },
+    {
+      "course_group": 21,
+      "number": 2,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        25,
+        37,
+        36,
+        48,
+        50,
+        39,
+        26,
+        44,
+        40,
+        17,
+        2,
+        21,
+        10,
+        51,
+        52,
+        8,
+        29,
+        22,
+        32,
+        54,
+        42,
+        16
+      ],
+      "id": 26
+    },
+    {
+      "course_group": 22,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        53,
+        49,
+        51,
+        5,
+        48,
+        27,
+        36,
+        28,
+        43,
+        19,
+        35,
+        4,
+        0,
+        14,
+        31,
+        13,
+        41
+      ],
+      "id": 27
+    },
+    {
+      "course_group": 23,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 5,
+      "students": [
+        28,
+        19,
+        27,
+        43,
+        35,
+        49,
+        26
+      ],
+      "id": 28
+    },
+    {
+      "course_group": 24,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 3,
+      "students": [
+        36,
+        41,
+        48,
+        50,
+        15,
+        42,
+        24,
+        13,
+        4,
+        40,
+        52,
+        8,
+        12,
+        37
+      ],
+      "id": 29
+    },
+    {
+      "course_group": 25,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        6,
+        15,
+        52,
+        1,
+        39,
+        26,
+        24,
+        32,
+        37,
+        48,
+        42,
+        9,
+        5,
+        50,
+        29,
+        27
+      ],
+      "id": 30
+    },
+    {
+      "course_group": 25,
+      "number": 2,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        8,
+        40,
+        7,
+        36,
+        22,
+        44,
+        41,
+        38,
+        23,
+        35,
+        49,
+        46,
+        25,
+        19,
+        11
+      ],
+      "id": 31
+    },
+    {
+      "course_group": 26,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        47,
+        31,
+        30,
+        18,
+        54,
+        43,
+        20,
+        45,
+        12
+      ],
+      "id": 32
+    },
+    {
+      "course_group": 27,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 4,
+      "students": [
+        15,
+        26,
+        4,
+        23,
+        49,
+        28
+      ],
+      "id": 33
+    },
+    {
+      "course_group": 28,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        12,
+        47,
+        53,
+        13,
+        6,
+        19,
+        34,
+        37,
+        30,
+        35,
+        5,
+        41,
+        52,
+        18,
+        9,
+        38
+      ],
+      "id": 34
+    },
+    {
+      "course_group": 28,
+      "number": 2,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        1,
+        32,
+        42,
+        36,
+        14,
+        27,
+        11,
+        21,
+        43,
+        31,
+        7,
+        3,
+        46,
+        29,
+        2,
+        48
+      ],
+      "id": 35
+    },
+    {
+      "course_group": 29,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 2,
+      "students": [
+        54,
+        51,
+        8,
+        16,
+        24,
+        0,
+        45,
+        10,
+        22,
+        50,
+        39,
+        40,
+        25,
+        33,
+        44,
+        17,
+        20
+      ],
+      "id": 36
+    },
+    {
+      "course_group": 30,
+      "number": 1,
+      "teacher": null,
+      "room": null,
+      "hours_per_week": 7,
+      "students": [
+        34,
+        31,
+        19,
+        12,
+        41,
+        42,
+        27,
+        38,
+        37,
+        11,
+        32,
+        48,
+        29
+      ],
+      "id": 37
+    },
+    {
+      "course_group": 31,
+      "number": 1,
+      "teacher": null,
+      "room": "TH1",
+      "hours_per_week": 2,
+      "students": [
+        10,
+        18,
+        26,
+        21,
+        50,
+        4,
+        39,
+        23,
+        8,
+        52,
+        40,
+        22,
+        3,
+        47,
+        20,
+        2,
+        46,
+        17
+      ],
+      "id": 38
+    },
+    {
+      "course_group": 31,
+      "number": 2,
+      "teacher": null,
+      "room": "TH1",
+      "hours_per_week": 2,
+      "students": [
+        9,
+        16,
+        15,
+        5,
+        51,
+        43,
+        13,
+        28,
+        24,
+        6,
+        30,
+        45,
+        1,
+        35,
+        7,
+        49,
+        54,
+        44,
+        0,
+        33,
+        14,
+        25,
+        36
+      ],
+      "id": 39
+    }
+  ],
+  "students": [
+    {
+      "id": 0,
+      "name": "Al Nashawate, Riad",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        10,
+        31,
+        12,
+        22
+      ],
+      "courses": [
+        25,
+        13,
+        2,
+        36,
+        8,
+        14,
+        27,
+        39,
+        16,
+        10
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Allmann, Leni",
+      "choices": [
+        1,
+        5,
+        13,
+        8,
+        28,
+        21,
+        25,
+        31,
+        4,
+        0
+      ],
+      "courses": [
+        35,
+        30,
+        6,
+        39,
+        25,
+        7,
+        17,
+        1,
+        2,
+        12
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Bäcker, Elina",
+      "choices": [
+        7,
+        1,
+        13,
+        6,
+        28,
+        21,
+        10,
+        31,
+        18,
+        0
+      ],
+      "courses": [
+        0,
+        26,
+        22,
+        17,
+        9,
+        14,
+        3,
+        35,
+        11,
+        38
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bunn, Amelie",
+      "choices": [
+        1,
+        5,
+        13,
+        18,
+        28,
+        21,
+        10,
+        31,
+        8,
+        0
+      ],
+      "courses": [
+        17,
+        12,
+        7,
+        25,
+        22,
+        35,
+        0,
+        38,
+        3,
+        14
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Cheema, Preshay",
+      "choices": [
+        7,
+        5,
+        27,
+        15,
+        21,
+        24,
+        10,
+        31,
+        4,
+        22
+      ],
+      "courses": [
+        33,
+        19,
+        10,
+        38,
+        25,
+        29,
+        27,
+        14,
+        7,
+        6
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Ditz, Evelin",
+      "choices": [
+        17,
+        1,
+        13,
+        6,
+        28,
+        21,
+        25,
+        31,
+        8,
+        22
+      ],
+      "courses": [
+        2,
+        27,
+        39,
+        21,
+        12,
+        30,
+        8,
+        34,
+        17,
+        25
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Dries, Carolina",
+      "choices": [
+        11,
+        20,
+        5,
+        14,
+        28,
+        2,
+        25,
+        31,
+        8,
+        0
+      ],
+      "courses": [
+        30,
+        1,
+        15,
+        7,
+        18,
+        12,
+        34,
+        39,
+        4,
+        24
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Frey, Cosima",
+      "choices": [
+        11,
+        1,
+        5,
+        14,
+        28,
+        21,
+        25,
+        31,
+        8,
+        0
+      ],
+      "courses": [
+        7,
+        31,
+        2,
+        18,
+        39,
+        35,
+        25,
+        12,
+        15,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Fuhr, Henry",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        25,
+        31,
+        24,
+        0
+      ],
+      "courses": [
+        31,
+        36,
+        0,
+        3,
+        11,
+        26,
+        38,
+        13,
+        29,
+        9
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Gavriluta, Amalia-Andreea",
+      "choices": [
+        7,
+        17,
+        20,
+        6,
+        14,
+        28,
+        4,
+        25,
+        31,
+        0
+      ],
+      "courses": [
+        39,
+        0,
+        11,
+        6,
+        21,
+        30,
+        24,
+        34,
+        8,
+        18
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Giss, Viviane",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        10,
+        31,
+        19,
+        0
+      ],
+      "courses": [
+        38,
+        14,
+        23,
+        26,
+        9,
+        36,
+        13,
+        11,
+        0,
+        3
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Hahn, Lia",
+      "choices": [
+        1,
+        5,
+        30,
+        8,
+        14,
+        28,
+        21,
+        25,
+        12,
+        0
+      ],
+      "courses": [
+        0,
+        3,
+        7,
+        35,
+        12,
+        37,
+        25,
+        16,
+        18,
+        31
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Haupert, Maximilian",
+      "choices": [
+        1,
+        5,
+        30,
+        8,
+        14,
+        28,
+        21,
+        26,
+        24,
+        0
+      ],
+      "courses": [
+        18,
+        34,
+        37,
+        2,
+        1,
+        25,
+        7,
+        12,
+        32,
+        29
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Heintz, Paula",
+      "choices": [
+        17,
+        1,
+        5,
+        14,
+        28,
+        21,
+        10,
+        31,
+        24,
+        22
+      ],
+      "courses": [
+        2,
+        34,
+        29,
+        39,
+        25,
+        18,
+        7,
+        14,
+        27,
+        21
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Hosseini, Hadi",
+      "choices": [
+        7,
+        1,
+        13,
+        6,
+        28,
+        21,
+        10,
+        31,
+        4,
+        22
+      ],
+      "courses": [
+        8,
+        11,
+        35,
+        2,
+        25,
+        17,
+        14,
+        6,
+        27,
+        39
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Jain, Ishaan",
+      "choices": [
+        7,
+        20,
+        27,
+        6,
+        15,
+        2,
+        25,
+        31,
+        24,
+        0
+      ],
+      "courses": [
+        10,
+        4,
+        19,
+        30,
+        33,
+        39,
+        29,
+        1,
+        24,
+        8
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Jakobi, Alina",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        10,
+        31,
+        4,
+        0
+      ],
+      "courses": [
+        13,
+        39,
+        36,
+        2,
+        10,
+        1,
+        14,
+        26,
+        6,
+        9
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Kheder, Ahmad",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        10,
+        31,
+        19,
+        0
+      ],
+      "courses": [
+        0,
+        9,
+        3,
+        13,
+        26,
+        23,
+        14,
+        11,
+        38,
+        36
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Kirschberger, Celine",
+      "choices": [
+        7,
+        5,
+        13,
+        28,
+        21,
+        2,
+        26,
+        31,
+        18,
+        0
+      ],
+      "courses": [
+        38,
+        25,
+        32,
+        10,
+        7,
+        22,
+        1,
+        17,
+        34,
+        4
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Korb, Klemens",
+      "choices": [
+        23,
+        5,
+        30,
+        8,
+        14,
+        28,
+        21,
+        25,
+        2,
+        22
+      ],
+      "courses": [
+        7,
+        37,
+        12,
+        25,
+        18,
+        28,
+        34,
+        27,
+        4,
+        31
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Kreis, Chanel",
+      "choices": [
+        7,
+        5,
+        9,
+        29,
+        21,
+        2,
+        26,
+        31,
+        18,
+        0
+      ],
+      "courses": [
+        13,
+        4,
+        7,
+        1,
+        32,
+        25,
+        22,
+        38,
+        10,
+        36
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Kuykendall, Julia",
+      "choices": [
+        7,
+        3,
+        13,
+        6,
+        28,
+        21,
+        10,
+        31,
+        16,
+        0
+      ],
+      "courses": [
+        38,
+        26,
+        10,
+        17,
+        14,
+        35,
+        20,
+        0,
+        9,
+        5
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Lang, Marielle",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        25,
+        31,
+        12,
+        0
+      ],
+      "courses": [
+        31,
+        9,
+        0,
+        36,
+        3,
+        26,
+        11,
+        38,
+        13,
+        16
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Lauer, Vincent",
+      "choices": [
+        7,
+        5,
+        27,
+        15,
+        21,
+        2,
+        25,
+        31,
+        12,
+        0
+      ],
+      "courses": [
+        19,
+        16,
+        25,
+        4,
+        33,
+        7,
+        38,
+        10,
+        31,
+        1
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Loch, Lian",
+      "choices": [
+        20,
+        1,
+        9,
+        6,
+        8,
+        29,
+        25,
+        31,
+        24,
+        0
+      ],
+      "courses": [
+        13,
+        36,
+        29,
+        30,
+        12,
+        39,
+        8,
+        0,
+        24,
+        3
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Lorenz, Lina",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        25,
+        31,
+        12,
+        0
+      ],
+      "courses": [
+        26,
+        2,
+        16,
+        13,
+        10,
+        9,
+        1,
+        39,
+        36,
+        31
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Mathias, Neven",
+      "choices": [
+        7,
+        23,
+        27,
+        6,
+        15,
+        21,
+        25,
+        31,
+        2,
+        0
+      ],
+      "courses": [
+        38,
+        26,
+        33,
+        30,
+        1,
+        19,
+        11,
+        9,
+        4,
+        28
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Meelis, Ben",
+      "choices": [
+        23,
+        5,
+        30,
+        8,
+        14,
+        28,
+        21,
+        25,
+        2,
+        22
+      ],
+      "courses": [
+        4,
+        27,
+        35,
+        28,
+        37,
+        18,
+        25,
+        12,
+        7,
+        30
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Mikscha, Fabian",
+      "choices": [
+        20,
+        23,
+        27,
+        6,
+        8,
+        15,
+        10,
+        31,
+        19,
+        22
+      ],
+      "courses": [
+        14,
+        19,
+        28,
+        8,
+        27,
+        39,
+        12,
+        24,
+        23,
+        33
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Prokopyuk, Daria",
+      "choices": [
+        7,
+        1,
+        30,
+        6,
+        14,
+        28,
+        21,
+        25,
+        12,
+        0
+      ],
+      "courses": [
+        10,
+        16,
+        9,
+        2,
+        26,
+        1,
+        18,
+        30,
+        35,
+        37
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Rajalingam, Raneka",
+      "choices": [
+        7,
+        20,
+        1,
+        6,
+        14,
+        28,
+        26,
+        31,
+        12,
+        0
+      ],
+      "courses": [
+        8,
+        11,
+        18,
+        32,
+        3,
+        24,
+        39,
+        16,
+        34,
+        0
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Roos, Arthur",
+      "choices": [
+        7,
+        1,
+        30,
+        6,
+        14,
+        28,
+        21,
+        26,
+        16,
+        22
+      ],
+      "courses": [
+        37,
+        10,
+        32,
+        25,
+        2,
+        35,
+        20,
+        27,
+        8,
+        18
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Ruppel, Devid-Justin",
+      "choices": [
+        7,
+        1,
+        30,
+        6,
+        14,
+        28,
+        21,
+        25,
+        4,
+        0
+      ],
+      "courses": [
+        35,
+        11,
+        6,
+        9,
+        18,
+        3,
+        30,
+        0,
+        26,
+        37
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Sadovnychyi, Valentyn",
+      "choices": [
+        20,
+        3,
+        9,
+        6,
+        8,
+        29,
+        10,
+        31,
+        2,
+        16,
+        0
+      ],
+      "courses": [
+        1,
+        12,
+        8,
+        20,
+        4,
+        14,
+        13,
+        39,
+        24,
+        36,
+        5
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Sannoh, Sufian",
+      "choices": [
+        11,
+        20,
+        30,
+        6,
+        14,
+        28,
+        4,
+        10,
+        8,
+        0
+      ],
+      "courses": [
+        14,
+        37,
+        24,
+        18,
+        34,
+        15,
+        12,
+        8,
+        6,
+        1
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Scheidt, Michel",
+      "choices": [
+        7,
+        20,
+        23,
+        6,
+        14,
+        28,
+        25,
+        31,
+        16,
+        22
+      ],
+      "courses": [
+        8,
+        18,
+        24,
+        11,
+        28,
+        27,
+        39,
+        34,
+        20,
+        31
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Schmidt, Lotta",
+      "choices": [
+        17,
+        1,
+        13,
+        6,
+        28,
+        21,
+        25,
+        31,
+        24,
+        4,
+        22
+      ],
+      "courses": [
+        26,
+        29,
+        31,
+        9,
+        35,
+        6,
+        17,
+        27,
+        39,
+        21,
+        2
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Schneider, Finn",
+      "choices": [
+        7,
+        1,
+        30,
+        6,
+        14,
+        28,
+        21,
+        25,
+        24,
+        0
+      ],
+      "courses": [
+        26,
+        11,
+        3,
+        9,
+        30,
+        18,
+        34,
+        37,
+        0,
+        29
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Schneider, Silja",
+      "choices": [
+        1,
+        5,
+        30,
+        8,
+        14,
+        28,
+        21,
+        25,
+        12,
+        0
+      ],
+      "courses": [
+        18,
+        2,
+        12,
+        25,
+        31,
+        37,
+        7,
+        34,
+        1,
+        16
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Singh, Josephine",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        25,
+        31,
+        18,
+        0
+      ],
+      "courses": [
+        9,
+        3,
+        26,
+        30,
+        0,
+        38,
+        22,
+        13,
+        36,
+        11
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Späth, Raphael",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        25,
+        31,
+        24,
+        0
+      ],
+      "courses": [
+        31,
+        11,
+        26,
+        29,
+        0,
+        13,
+        3,
+        36,
+        38,
+        9
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Stöckle, Leonie",
+      "choices": [
+        1,
+        5,
+        30,
+        8,
+        14,
+        28,
+        21,
+        25,
+        24,
+        22
+      ],
+      "courses": [
+        29,
+        12,
+        37,
+        7,
+        31,
+        2,
+        18,
+        25,
+        34,
+        27
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Thierbach, Ryan",
+      "choices": [
+        7,
+        1,
+        30,
+        6,
+        14,
+        28,
+        21,
+        25,
+        24,
+        0
+      ],
+      "courses": [
+        10,
+        35,
+        2,
+        37,
+        29,
+        18,
+        30,
+        1,
+        9,
+        26
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Vogt, Constantin",
+      "choices": [
+        20,
+        23,
+        13,
+        6,
+        8,
+        28,
+        26,
+        31,
+        2,
+        22
+      ],
+      "courses": [
+        4,
+        8,
+        24,
+        39,
+        32,
+        17,
+        27,
+        12,
+        28,
+        35
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Vose, Alexander",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        25,
+        31,
+        4,
+        0
+      ],
+      "courses": [
+        3,
+        26,
+        31,
+        0,
+        13,
+        9,
+        39,
+        36,
+        6,
+        11
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Wahl, Li Li",
+      "choices": [
+        7,
+        20,
+        9,
+        6,
+        29,
+        2,
+        26,
+        31,
+        19,
+        0
+      ],
+      "courses": [
+        24,
+        13,
+        11,
+        36,
+        23,
+        39,
+        1,
+        32,
+        4,
+        8
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Weber, Josseline",
+      "choices": [
+        1,
+        5,
+        13,
+        8,
+        28,
+        21,
+        25,
+        31,
+        4,
+        0
+      ],
+      "courses": [
+        25,
+        12,
+        17,
+        6,
+        7,
+        35,
+        31,
+        38,
+        0,
+        3
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Wesner, Alexa",
+      "choices": [
+        7,
+        1,
+        13,
+        6,
+        28,
+        21,
+        26,
+        31,
+        18,
+        0
+      ],
+      "courses": [
+        32,
+        11,
+        34,
+        22,
+        0,
+        17,
+        3,
+        8,
+        25,
+        38
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Wild, Johannes",
+      "choices": [
+        7,
+        1,
+        30,
+        6,
+        14,
+        28,
+        21,
+        25,
+        24,
+        22
+      ],
+      "courses": [
+        26,
+        29,
+        27,
+        30,
+        9,
+        10,
+        2,
+        37,
+        18,
+        35
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Wittmann, Neo",
+      "choices": [
+        20,
+        23,
+        27,
+        6,
+        8,
+        15,
+        25,
+        31,
+        2,
+        22
+      ],
+      "courses": [
+        27,
+        8,
+        12,
+        28,
+        19,
+        4,
+        33,
+        39,
+        31,
+        24
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Wrzesinski, Nehja",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        25,
+        31,
+        24,
+        0
+      ],
+      "courses": [
+        0,
+        13,
+        26,
+        11,
+        29,
+        38,
+        3,
+        30,
+        36,
+        9
+      ]
+    },
+    {
+      "id": 51,
+      "name": "Zehmke, Annalena",
+      "choices": [
+        7,
+        1,
+        9,
+        6,
+        29,
+        21,
+        10,
+        31,
+        4,
+        22
+      ],
+      "courses": [
+        10,
+        36,
+        27,
+        39,
+        13,
+        26,
+        2,
+        6,
+        9,
+        14
+      ]
+    },
+    {
+      "id": 52,
+      "name": "Zerfaß, Isabella",
+      "choices": [
+        7,
+        1,
+        13,
+        6,
+        28,
+        21,
+        25,
+        31,
+        24,
+        0
+      ],
+      "courses": [
+        30,
+        9,
+        3,
+        0,
+        26,
+        29,
+        11,
+        34,
+        38,
+        17
+      ]
+    },
+    {
+      "id": 53,
+      "name": "Zimmermann, Zora-Filomena",
+      "choices": [
+        17,
+        20,
+        13,
+        6,
+        28,
+        4,
+        10,
+        0,
+        16,
+        22
+      ],
+      "courses": [
+        0,
+        27,
+        21,
+        34,
+        14,
+        17,
+        8,
+        6,
+        24,
+        20
+      ]
+    },
+    {
+      "id": 54,
+      "name": "Ziora, Lea",
+      "choices": [
+        17,
+        1,
+        9,
+        6,
+        29,
+        21,
+        26,
+        31,
+        8,
+        0
+      ],
+      "courses": [
+        36,
+        32,
+        1,
+        12,
+        21,
+        39,
+        2,
+        26,
+        13,
+        9
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": 0,
+      "length": "Double",
+      "number": 1
+    },
+    {
+      "id": 1,
+      "length": "Double",
+      "number": 2
+    },
+    {
+      "id": 2,
+      "length": "Double",
+      "number": 3
+    },
+    {
+      "id": 3,
+      "length": "Double",
+      "number": 4
+    },
+    {
+      "id": 4,
+      "length": "Double",
+      "number": 5
+    },
+    {
+      "id": 5,
+      "length": "Double",
+      "number": 6
+    },
+    {
+      "id": 6,
+      "length": "Double",
+      "number": 7
+    },
+    {
+      "id": 7,
+      "length": "Double",
+      "number": 8
+    },
+    {
+      "id": 8,
+      "length": "Double",
+      "number": 9
+    },
+    {
+      "id": 9,
+      "length": "Double",
+      "number": 10
+    },
+    {
+      "id": 11,
+      "length": "Single",
+      "number": 11
+    },
+    {
+      "id": 12,
+      "length": "Double",
+      "number": 12
+    },
+    {
+      "id": 13,
+      "length": "Double",
+      "number": 13
+    },
+    {
+      "id": 14,
+      "length": "Single",
+      "number": 14
+    },
+    {
+      "id": 16,
+      "length": "Double",
+      "number": 15
+    },
+    {
+      "id": 17,
+      "length": "Single",
+      "number": 16
+    },
+    {
+      "id": 18,
+      "length": "Single",
+      "number": 17
+    },
+    {
+      "id": 20,
+      "length": "Single",
+      "number": 18
+    },
+    {
+      "id": 21,
+      "length": "Single",
+      "number": 19
+    },
+    {
+      "id": 24,
+      "length": "Single",
+      "number": 20
+    },
+    {
+      "id": 25,
+      "length": "Double",
+      "number": 21
+    },
+    {
+      "id": 26,
+      "length": "Single",
+      "number": 22
+    },
+    {
+      "id": 27,
+      "length": "Double",
+      "number": 23
+    },
+    {
+      "id": 29,
+      "length": "Double",
+      "number": 24
+    }
+  ],
+  "course_units": [
+    {
+      "id": 0,
+      "course_id": 0,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 1,
+      "course_id": 0,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 2,
+      "course_id": 1,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 3,
+      "course_id": 1,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 4,
+      "course_id": 2,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 5,
+      "course_id": 2,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 6,
+      "course_id": 2,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 7,
+      "course_id": 3,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 8,
+      "course_id": 3,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 9,
+      "course_id": 3,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 10,
+      "course_id": 4,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 11,
+      "course_id": 4,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 12,
+      "course_id": 5,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 13,
+      "course_id": 5,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 14,
+      "course_id": 5,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 15,
+      "course_id": 6,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 16,
+      "course_id": 6,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 17,
+      "course_id": 7,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 18,
+      "course_id": 7,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 19,
+      "course_id": 7,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 20,
+      "course_id": 8,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 21,
+      "course_id": 8,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 22,
+      "course_id": 9,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 23,
+      "course_id": 9,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 24,
+      "course_id": 10,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 25,
+      "course_id": 10,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 26,
+      "course_id": 10,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 27,
+      "course_id": 11,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 28,
+      "course_id": 11,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 29,
+      "course_id": 11,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 30,
+      "course_id": 12,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 31,
+      "course_id": 12,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 32,
+      "course_id": 13,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 33,
+      "course_id": 13,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 34,
+      "course_id": 14,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 35,
+      "course_id": 15,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 36,
+      "course_id": 15,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 37,
+      "course_id": 15,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 38,
+      "course_id": 16,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 39,
+      "course_id": 16,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 40,
+      "course_id": 17,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 41,
+      "course_id": 17,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 42,
+      "course_id": 18,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 43,
+      "course_id": 19,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 44,
+      "course_id": 20,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 45,
+      "course_id": 20,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 46,
+      "course_id": 21,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 47,
+      "course_id": 21,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 48,
+      "course_id": 21,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 49,
+      "course_id": 22,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 50,
+      "course_id": 22,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 51,
+      "course_id": 23,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 52,
+      "course_id": 23,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 53,
+      "course_id": 23,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 54,
+      "course_id": 24,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 55,
+      "course_id": 24,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 56,
+      "course_id": 24,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 57,
+      "course_id": 25,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 58,
+      "course_id": 25,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 59,
+      "course_id": 26,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 60,
+      "course_id": 26,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 61,
+      "course_id": 27,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 62,
+      "course_id": 27,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 63,
+      "course_id": 28,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 64,
+      "course_id": 28,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 65,
+      "course_id": 28,
+      "sequence_number": 2,
+      "length": "Single"
+    },
+    {
+      "id": 66,
+      "course_id": 29,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 67,
+      "course_id": 29,
+      "sequence_number": 1,
+      "length": "Single"
+    },
+    {
+      "id": 68,
+      "course_id": 30,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 69,
+      "course_id": 31,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 70,
+      "course_id": 32,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 71,
+      "course_id": 33,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 72,
+      "course_id": 33,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 73,
+      "course_id": 34,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 74,
+      "course_id": 35,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 75,
+      "course_id": 36,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 76,
+      "course_id": 37,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 77,
+      "course_id": 37,
+      "sequence_number": 1,
+      "length": "Double"
+    },
+    {
+      "id": 78,
+      "course_id": 37,
+      "sequence_number": 2,
+      "length": "Double"
+    },
+    {
+      "id": 79,
+      "course_id": 37,
+      "sequence_number": 3,
+      "length": "Single"
+    },
+    {
+      "id": 80,
+      "course_id": 38,
+      "sequence_number": 0,
+      "length": "Double"
+    },
+    {
+      "id": 81,
+      "course_id": 39,
+      "sequence_number": 0,
+      "length": "Double"
+    }
+  ],
+  "block_assignments": [
+    {
+      "block_id": 5,
+      "course_unit_id": 72
+    },
+    {
+      "block_id": 4,
+      "course_unit_id": 27
+    },
+    {
+      "block_id": 13,
+      "course_unit_id": 57
+    },
+    {
+      "block_id": 29,
+      "course_unit_id": 63
+    },
+    {
+      "block_id": 25,
+      "course_unit_id": 80
+    },
+    {
+      "block_id": 12,
+      "course_unit_id": 18
+    },
+    {
+      "block_id": 21,
+      "course_unit_id": 21
+    },
+    {
+      "block_id": 7,
+      "course_unit_id": 13
+    },
+    {
+      "block_id": 4,
+      "course_unit_id": 30
+    },
+    {
+      "block_id": 8,
+      "course_unit_id": 35
+    },
+    {
+      "block_id": 13,
+      "course_unit_id": 59
+    },
+    {
+      "block_id": 16,
+      "course_unit_id": 5
+    },
+    {
+      "block_id": 8,
+      "course_unit_id": 38
+    },
+    {
+      "block_id": 4,
+      "course_unit_id": 25
+    },
+    {
+      "block_id": 25,
+      "course_unit_id": 54
+    },
+    {
+      "block_id": 0,
+      "course_unit_id": 73
+    },
+    {
+      "block_id": 9,
+      "course_unit_id": 17
+    },
+    {
+      "block_id": 7,
+      "course_unit_id": 78
+    },
+    {
+      "block_id": 16,
+      "course_unit_id": 10
+    },
+    {
+      "block_id": 7,
+      "course_unit_id": 52
+    },
+    {
+      "block_id": 9,
+      "course_unit_id": 28
+    },
+    {
+      "block_id": 20,
+      "course_unit_id": 6
+    },
+    {
+      "block_id": 12,
+      "course_unit_id": 20
+    },
+    {
+      "block_id": 17,
+      "course_unit_id": 11
+    },
+    {
+      "block_id": 26,
+      "course_unit_id": 9
+    },
+    {
+      "block_id": 3,
+      "course_unit_id": 15
+    },
+    {
+      "block_id": 27,
+      "course_unit_id": 76
+    },
+    {
+      "block_id": 24,
+      "course_unit_id": 45
+    },
+    {
+      "block_id": 11,
+      "course_unit_id": 79
+    },
+    {
+      "block_id": 27,
+      "course_unit_id": 33
+    },
+    {
+      "block_id": 0,
+      "course_unit_id": 75
+    },
+    {
+      "block_id": 29,
+      "course_unit_id": 24
+    },
+    {
+      "block_id": 11,
+      "course_unit_id": 14
+    },
+    {
+      "block_id": 1,
+      "course_unit_id": 77
+    },
+    {
+      "block_id": 7,
+      "course_unit_id": 47
+    },
+    {
+      "block_id": 24,
+      "course_unit_id": 39
+    },
+    {
+      "block_id": 2,
+      "course_unit_id": 8
+    },
+    {
+      "block_id": 14,
+      "course_unit_id": 31
+    },
+    {
+      "block_id": 5,
+      "course_unit_id": 42
+    },
+    {
+      "block_id": 27,
+      "course_unit_id": 41
+    },
+    {
+      "block_id": 11,
+      "course_unit_id": 48
+    },
+    {
+      "block_id": 26,
+      "course_unit_id": 62
+    },
+    {
+      "block_id": 11,
+      "course_unit_id": 50
+    },
+    {
+      "block_id": 25,
+      "course_unit_id": 4
+    },
+    {
+      "block_id": 8,
+      "course_unit_id": 51
+    },
+    {
+      "block_id": 29,
+      "course_unit_id": 36
+    },
+    {
+      "block_id": 6,
+      "course_unit_id": 70
+    },
+    {
+      "block_id": 8,
+      "course_unit_id": 66
+    },
+    {
+      "block_id": 5,
+      "course_unit_id": 32
+    },
+    {
+      "block_id": 0,
+      "course_unit_id": 43
+    },
+    {
+      "block_id": 29,
+      "course_unit_id": 7
+    },
+    {
+      "block_id": 26,
+      "course_unit_id": 3
+    },
+    {
+      "block_id": 20,
+      "course_unit_id": 65
+    },
+    {
+      "block_id": 2,
+      "course_unit_id": 2
+    },
+    {
+      "block_id": 24,
+      "course_unit_id": 37
+    },
+    {
+      "block_id": 6,
+      "course_unit_id": 34
+    },
+    {
+      "block_id": 14,
+      "course_unit_id": 26
+    },
+    {
+      "block_id": 14,
+      "course_unit_id": 29
+    },
+    {
+      "block_id": 9,
+      "course_unit_id": 12
+    },
+    {
+      "block_id": 7,
+      "course_unit_id": 49
+    },
+    {
+      "block_id": 13,
+      "course_unit_id": 55
+    },
+    {
+      "block_id": 21,
+      "course_unit_id": 60
+    },
+    {
+      "block_id": 21,
+      "course_unit_id": 19
+    },
+    {
+      "block_id": 11,
+      "course_unit_id": 53
+    },
+    {
+      "block_id": 12,
+      "course_unit_id": 22
+    },
+    {
+      "block_id": 18,
+      "course_unit_id": 23
+    },
+    {
+      "block_id": 8,
+      "course_unit_id": 44
+    },
+    {
+      "block_id": 2,
+      "course_unit_id": 61
+    },
+    {
+      "block_id": 1,
+      "course_unit_id": 81
+    },
+    {
+      "block_id": 20,
+      "course_unit_id": 1
+    },
+    {
+      "block_id": 6,
+      "course_unit_id": 68
+    },
+    {
+      "block_id": 6,
+      "course_unit_id": 69
+    },
+    {
+      "block_id": 17,
+      "course_unit_id": 16
+    },
+    {
+      "block_id": 18,
+      "course_unit_id": 58
+    },
+    {
+      "block_id": 29,
+      "course_unit_id": 46
+    },
+    {
+      "block_id": 0,
+      "course_unit_id": 74
+    },
+    {
+      "block_id": 24,
+      "course_unit_id": 67
+    },
+    {
+      "block_id": 16,
+      "course_unit_id": 0
+    },
+    {
+      "block_id": 3,
+      "course_unit_id": 64
+    },
+    {
+      "block_id": 27,
+      "course_unit_id": 71
+    },
+    {
+      "block_id": 5,
+      "course_unit_id": 40
+    },
+    {
+      "block_id": 18,
+      "course_unit_id": 56
+    }
+  ],
+  "course_blocks": [
+    {
+      "id": 1,
+      "name": "F aufgestockt",
+      "courses": [
+        15,
+        16
+      ]
+    },
+    {
+      "id": 2,
+      "name": "L aufgestockt",
+      "courses": [
+        21,
+        22
+      ]
+    },
+    {
+      "id": 3,
+      "name": "GW",
+      "courses": [
+        35,
+        34,
+        36,
+        19
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Eth/Rel",
+      "courses": [
+        30,
+        32,
+        31,
+        14
+      ]
+    }
+  ],
+  "number_of_blocks": 30,
+  "total_hours_per_week": 40,
+  "max_course_students_difference": 5,
+  "max_students_per_course": 30
+}
