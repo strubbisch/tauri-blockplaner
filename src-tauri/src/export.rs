@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
-use blockplaner_core::export::export_to_json;
+use blockplaner_core::{data::AppData, export::export_to_json};
 
 use crate::state::AppState;
 
@@ -8,11 +8,11 @@ use crate::state::AppState;
 pub fn export_json(
     file_path: String,
     app_state: tauri::State<AppState>
-) -> Result<(), String> {
+) -> Result<AppData, String> {
     let path = PathBuf::from(file_path);
     let app_data = app_state.app_data.lock().unwrap();
     match export_to_json(path, &app_data) {
-        Ok(_) => Ok(()),
+        Ok(_) => Ok(app_data.clone()),
         Err(e) => Err(format!("Fehler beim Exportieren der Daten: {e}")),
     }
 }

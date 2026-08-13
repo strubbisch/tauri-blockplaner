@@ -112,11 +112,35 @@ const exportJSON = async (filePath: String) => {
   try {
     isLoading.value = true;
     error.value = null;
-    await invoke("export_json", {
+    appData.value = await invoke("export_json", {
       filePath: filePath,
     });
   } catch (err) {
     error.value = `${err}`;
+    console.error(err);
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+}
+
+const updateAppSettings = async (
+  numberofBlocks?: number,
+  totalHoursPerWeek?: number,
+  maxCourseStudentsDifference?: number,
+  maxStudentsPerCourse?: number,
+) => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    await invoke("update_app_settings", {
+      numberOfBlocks: numberofBlocks,
+      totalHoursPerWeek: totalHoursPerWeek,
+      maxCourseStudentsDifference: maxCourseStudentsDifference,
+      maxStudentsPerCourse: maxStudentsPerCourse,
+    });
+  } catch (err) {
+    error.value = `Failed to update settings: ${err}`;
     console.error(err);
     throw err;
   } finally {
@@ -233,4 +257,5 @@ export const useAppStore = () => ({
   deleteCourse,
   createCourses,
   exportJSON,
+  updateAppSettings,
 });
