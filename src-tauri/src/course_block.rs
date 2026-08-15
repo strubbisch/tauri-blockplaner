@@ -28,3 +28,14 @@ pub fn update_course_block(id: usize, name: String, courses: Vec<usize>, app_sta
     course_block.courses = courses;
     Ok(app_data.clone())
 }
+
+#[tauri::command]
+pub fn delete_course_block(id: usize, app_state: tauri::State<AppState>) -> Result<AppData, String> {
+    let mut app_data = app_state.app_data.lock().unwrap();
+    let index = app_data.course_blocks
+        .iter()
+        .position(|cb| cb.id == id)
+        .ok_or_else(|| format!("Kursblock mit der ID {id} nucht gefunden!"))?;
+    app_data.course_blocks.remove(index);
+    Ok(app_data.clone())
+}

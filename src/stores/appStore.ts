@@ -281,6 +281,22 @@ const updateCourseBlock = async (
   }
 }
 
+const deleteCourseBlock = async (
+  id: number,
+) => {
+  try {
+    error.value = null;
+    appData.value = await invoke<AppData>("delete_course_block", {
+      id,
+    });
+    return appData.value;
+  } catch (err) {
+    error.value = `Fehler beim Löschen des Kursblocks: ${err}`;
+    console.error(err);
+    throw err;
+  }
+}
+
 export const useAppStore = () => ({
   appData,
   courseGroups,
@@ -298,4 +314,5 @@ export const useAppStore = () => ({
   updateAppSettings,
   newCourseBlock,
   updateCourseBlock,
+  deleteCourseBlock,
 });

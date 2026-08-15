@@ -39,6 +39,16 @@ const updateCourseBlock = async () => {
     );
     selectedCourseBlock.value = null;
 }
+
+const deleteCourseBlock = async () => {
+    if (selectedCourseBlock.value === null) {
+        return;
+    }
+    await appStore.deleteCourseBlock(
+        selectedCourseBlock.value.id,
+    );
+    selectedCourseBlock.value = null;
+}
 </script>
 
 <template>
@@ -88,6 +98,7 @@ const updateCourseBlock = async () => {
                 <form
                     v-if="selectedCourseBlock"
                     class="rounded-lg border border-zinc-300 bg-white p-3.5"
+                    @submit.prevent="updateCourseBlock()"
                 >
                     <h4 class="mb-3 mt-0 text-base font-semibold">Kursblock bearbeiten</h4>
                     <label class="mb-2.5 grid gap-1 text-[13px]">
@@ -115,12 +126,13 @@ const updateCourseBlock = async () => {
                         type="submit"
                         class="btn btn-primary"
                         :disabled="!selectedCourseBlock"
-                        @click="updateCourseBlock()"
                         >
                             Aktualisieren
                         </button>
                         <button
                         class="btn btn-primary"
+                        type="button"
+                        @click="deleteCourseBlock()"
                         >
                             Kursblock löschen
                         </button>

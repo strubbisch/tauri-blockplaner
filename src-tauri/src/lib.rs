@@ -77,6 +77,7 @@ pub fn run() {
             course::create_courses,
             course_block::new_course_block,
             course_block::update_course_block,
+            course_block::delete_course_block,
             export::export_json,
         ])
         .run(tauri::generate_context!())
