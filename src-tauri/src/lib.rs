@@ -2,6 +2,7 @@ mod course;
 mod export;
 mod import;
 mod state;
+mod course_block;
 
 use blockplaner_core::data::AppData;
 use state::AppState;
@@ -74,6 +75,8 @@ pub fn run() {
             course::create_parallel_course,
             course::delete_course,
             course::create_courses,
+            course_block::new_course_block,
+            course_block::update_course_block,
             export::export_json,
         ])
         .run(tauri::generate_context!())

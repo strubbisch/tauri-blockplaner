@@ -249,6 +249,38 @@ const createCourses = async () => {
   }
 }
 
+const newCourseBlock = async () => {
+  try {
+    error.value = null;
+    appData.value = await invoke<AppData>("new_course_block");
+    return appData.value;
+  } catch (err) {
+    error.value = `Fehler beim Erzeugen eines Kursblocks: ${err}`;
+    console.error(err);
+    throw err;
+  }
+}
+
+const updateCourseBlock = async (
+  id: number,
+  name: string,
+  courses: number[],
+) => {
+  try {
+    error.value = null;
+    appData.value = await invoke<AppData>("update_course_block", {
+      id,
+      name,
+      courses,
+    });
+    return appData.value;
+  } catch (err) {
+    error.value = `Fehler beim Aktualisieren des Kursblocks: ${err}`;
+    console.error(err);
+    throw err;
+  }
+}
+
 export const useAppStore = () => ({
   appData,
   courseGroups,
@@ -264,4 +296,6 @@ export const useAppStore = () => ({
   createCourses,
   exportJSON,
   updateAppSettings,
+  newCourseBlock,
+  updateCourseBlock,
 });
