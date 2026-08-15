@@ -28,6 +28,12 @@ export interface Course {
   students: number[];
 }
 
+export interface CourseBlock {
+  id: number;
+  name: string;
+  courses: number[];
+}
+
 export interface AppData {
   course_groups: CourseGroup[];
   courses: Course[];
@@ -35,7 +41,7 @@ export interface AppData {
   blocks: unknown[];
   course_units: unknown[];
   block_assignments: unknown[];
-  course_blocks: unknown[];
+  course_blocks: CourseBlock[];
   number_of_blocks: number;
   total_hours_per_week: number;
   max_course_students_difference: number;

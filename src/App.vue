@@ -5,9 +5,11 @@ import CourseGroupsView from "./components/CourseGroupsView.vue";
 import CoursesView from "./components/CoursesView.vue";
 import { useAppStore } from "./stores/appStore";
 import SettingsView from "./components/SettingsView.vue";
+import StudentsView from "./components/StudentsView.vue";
+import CourseBlockView from "./components/CourseBlockView.vue";
 
 const appStore = useAppStore();
-const activeView = ref<"overview" | "courses" | "settings">("overview");
+const activeView = ref<"overview" | "courses" | "settings" | "students" | "courseblocks">("overview");
 
 </script>
 
@@ -42,6 +44,28 @@ const activeView = ref<"overview" | "courses" | "settings">("overview");
         <button
           :class="[
             'btn',
+            activeView === 'courseblocks'
+              ? 'btn-primary'
+              : 'btn-secondary'
+          ]"
+          @click="activeView = 'courseblocks'"
+        >
+          Kursblöcke
+        </button>
+        <button
+          :class="[
+            'btn',
+            activeView === 'students'
+              ? 'btn-primary'
+              : 'btn-secondary'
+          ]"
+          @click="activeView = 'students'"
+        >
+          Schüler
+        </button>
+        <button
+          :class="[
+            'btn',
             activeView === 'settings'
               ? 'btn-primary'
               : 'btn-secondary',
@@ -70,6 +94,21 @@ const activeView = ref<"overview" | "courses" | "settings">("overview");
       <SettingsView
         v-else-if="activeView === 'settings'"
         class="flex-1"
+      />
+      <StudentsView
+        v-else-if="activeView === 'students'"
+        class="flex-1"
+        :students="appStore.appData.value.students"
+        :course-groups="appStore.appData.value.course_groups"
+        :courses="appStore.appData.value.courses"
+        :is-loading="appStore.isLoading.value"
+      />
+      <CourseBlockView
+        v-else-if="activeView === 'courseblocks'"
+        class="flex-1"
+        :course-blocks="appStore.appData.value.course_blocks"
+        :course-groups="appStore.appData.value.course_groups"
+        :courses="appStore.appData.value.courses"
       />
     </div>
   </main>
