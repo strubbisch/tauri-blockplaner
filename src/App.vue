@@ -7,9 +7,10 @@ import { useAppStore } from "./stores/appStore";
 import SettingsView from "./components/SettingsView.vue";
 import StudentsView from "./components/StudentsView.vue";
 import CourseBlockView from "./components/CourseBlockView.vue";
+import BlocksView from "./components/BlocksView.vue";
 
 const appStore = useAppStore();
-const activeView = ref<"overview" | "courses" | "settings" | "students" | "courseblocks">("overview");
+const activeView = ref<"overview" | "courses" | "settings" | "students" | "courseblocks" | "blocks">("overview");
 
 </script>
 
@@ -66,6 +67,17 @@ const activeView = ref<"overview" | "courses" | "settings" | "students" | "cours
         <button
           :class="[
             'btn',
+            activeView === 'blocks'
+              ? 'btn-primary'
+              : 'btn-secondary'
+          ]"
+          @click="activeView === 'blocks'"
+        >
+          Blöcke
+        </button>
+        <button
+          :class="[
+            'btn',
             activeView === 'settings'
               ? 'btn-primary'
               : 'btn-secondary',
@@ -109,6 +121,12 @@ const activeView = ref<"overview" | "courses" | "settings" | "students" | "cours
         :course-blocks="appStore.appData.value.course_blocks"
         :course-groups="appStore.appData.value.course_groups"
         :courses="appStore.appData.value.courses"
+      />
+      <BlocksView
+        v-else-if="activeView === 'blocks'"
+        class="flex-1"
+        :blocks="appStore.appData.value.blocks"
+        :is-loading="appStore.isLoading.value"
       />
     </div>
   </main>

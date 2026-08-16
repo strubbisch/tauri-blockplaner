@@ -34,13 +34,31 @@ export interface CourseBlock {
   courses: number[];
 }
 
+export interface BlockAssignment {
+  block_id: number;
+  course_unit_id: number;
+}
+
+export interface CourseUnit {
+  id: number;
+  course_id: number;
+  sequence_number: number;
+  length: string;
+}
+
+export interface Block {
+  id: number;
+  length: string;
+  number: number;
+}
+
 export interface AppData {
   course_groups: CourseGroup[];
   courses: Course[];
   students: Student[];
-  blocks: unknown[];
-  course_units: unknown[];
-  block_assignments: unknown[];
+  blocks: Block[];
+  course_units: CourseUnit[];
+  block_assignments: BlockAssignment[];
   course_blocks: CourseBlock[];
   number_of_blocks: number;
   total_hours_per_week: number;
@@ -104,6 +122,7 @@ const importJSON = async (filePath: string) => {
     appData.value = await invoke<AppData>("import_json", {
       filePath: filePath,
     });
+    console.log(appData.value.blocks);
     return appData.value;
   } catch (err) {
     error.value = `Failed to import JSON: ${err}`;
