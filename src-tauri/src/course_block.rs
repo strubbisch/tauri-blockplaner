@@ -5,7 +5,8 @@ use crate::state::AppState;
 #[tauri::command]
 pub fn new_course_block(app_state: tauri::State<AppState>) -> Result<AppData, String> {
     let mut app_data = app_state.app_data.lock().unwrap();
-    let next_id = app_data.course_blocks
+    let next_id = app_data
+        .course_blocks
         .iter()
         .map(|cb| cb.id)
         .max()
@@ -17,9 +18,15 @@ pub fn new_course_block(app_state: tauri::State<AppState>) -> Result<AppData, St
 }
 
 #[tauri::command]
-pub fn update_course_block(id: usize, name: String, courses: Vec<usize>, app_state: tauri::State<AppState>) -> Result<AppData, String> {
+pub fn update_course_block(
+    id: usize,
+    name: String,
+    courses: Vec<usize>,
+    app_state: tauri::State<AppState>,
+) -> Result<AppData, String> {
     let mut app_data = app_state.app_data.lock().unwrap();
-    let course_block = app_data.course_blocks
+    let course_block = app_data
+        .course_blocks
         .iter_mut()
         .find(|cb| cb.id == id)
         .ok_or_else(|| format!("kursblock mit der ID {id} nicht gefunden!"))?;
@@ -30,9 +37,13 @@ pub fn update_course_block(id: usize, name: String, courses: Vec<usize>, app_sta
 }
 
 #[tauri::command]
-pub fn delete_course_block(id: usize, app_state: tauri::State<AppState>) -> Result<AppData, String> {
+pub fn delete_course_block(
+    id: usize,
+    app_state: tauri::State<AppState>,
+) -> Result<AppData, String> {
     let mut app_data = app_state.app_data.lock().unwrap();
-    let index = app_data.course_blocks
+    let index = app_data
+        .course_blocks
         .iter()
         .position(|cb| cb.id == id)
         .ok_or_else(|| format!("Kursblock mit der ID {id} nucht gefunden!"))?;

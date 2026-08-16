@@ -108,19 +108,28 @@ const deleteCourseBlock = async () => {
                             v-model="selectedCourseBlock.name"
                         />
                     </label>
-                    <label class="mb-2.5 grid gap-1 text-[13px]">
-                        <span>Kurse, die zusammenliegen sollen</span>
-                        <select
-                            class="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none shadow focus:border-blue-600"
-                            v-model="selectedCourseBlock.courses"
-                            multiple
-                            size="10"
-                        >
-                            <option v-for="course in courses" :value="course.id">
-                                {{ getCourseName(course.id, courseGroups, courses) }}
-                            </option>
-                        </select>
-                    </label>
+                    <div class="mb-2.5">
+                        <span class="mb-2.5 block text-[13px]">Kurse, die zusammenliegen sollen</span>
+                        <div class="rounded-lg border border-zinc-300 bg-white p-3 shadow">
+                            <div class="max-h-120 overflow-y-auto space-y-2">
+                                <label 
+                                    v-for="course in courses" 
+                                    :key="course.id"
+                                    class="flex items-center gap-2 cursor-pointer hover:bg-zinc-50 p-2 rounded transition"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        v-model="selectedCourseBlock!.courses"
+                                        :value="course.id"
+                                        class="rounded border-zinc-300 text-blue-600 shadow-sm focus:border-blue-600 focus:ring-blue-600"
+                                    />
+                                    <span class="text-sm text-zinc-700">
+                                        {{ getCourseName(course.id, courseGroups, courses) }}
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="mt-3 flex gap-2">
                         <button
                         type="submit"

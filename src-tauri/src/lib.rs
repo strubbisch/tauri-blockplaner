@@ -1,8 +1,8 @@
 mod course;
+mod course_block;
 mod export;
 mod import;
 mod state;
-mod course_block;
 
 use blockplaner_core::data::AppData;
 use state::AppState;
