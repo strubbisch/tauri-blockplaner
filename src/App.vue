@@ -71,7 +71,7 @@ const activeView = ref<"overview" | "courses" | "settings" | "students" | "cours
               ? 'btn-primary'
               : 'btn-secondary'
           ]"
-          @click="activeView === 'blocks'"
+          @click="activeView = 'blocks'"
         >
           Blöcke
         </button>
