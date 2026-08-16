@@ -93,7 +93,26 @@ async function exportJSON() {
     }
     await appStore.exportJSON(selectedPath);
   } catch (err) {
-    console.error("Fehler beim Exportieren der Daten in JSON:", err)
+    console.error("Fehler beim Exportieren der Daten in JSON:", err);
+  }
+}
+
+async function exportPDF() {
+  try {
+    const selectedPath = await save({
+      filters: [
+        {
+          name: "PDF-Datei",
+          extensions: ["pdf"]
+        },
+      ],
+    });
+    if (!selectedPath) {
+      return;
+    }
+    await appStore.exportPDF(selectedPath);
+  } catch (err) {
+    console.error("Fehler beim Exportieren der Daten in PDF:", err);
   }
 }
 
@@ -159,19 +178,20 @@ async function clearData() {
       </div>
       <div class="flex gap-4">
         <button
-          @click="clearData"
+          @click="clearData()"
           class="btn btn-secondary"
         >
           Lösche alle Daten
         </button>
         <button
           class="btn btn-secondary"
-          @click="exportJSON"
+          @click="exportJSON()"
           >
           Exportiere JSON
         </button>
         <button
           class="btn btn-secondary"
+          @click="exportPDF()"
           >
           Exportiere PDF
         </button>

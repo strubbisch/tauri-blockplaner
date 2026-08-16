@@ -79,6 +79,7 @@ pub fn run() {
             course_block::update_course_block,
             course_block::delete_course_block,
             export::export_json,
+            export::export_pdf,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

@@ -130,6 +130,22 @@ const exportJSON = async (filePath: String) => {
   }
 }
 
+const exportPDF = async (filePath: String) => {
+  try {
+    isLoading.value = true;
+    error.value = null;
+    await invoke("export_pdf", {
+      filePath
+    });
+  } catch (err) {
+    console.error("[ERROR] Export fehlgeschlagen:", err);
+    error.value = `${err}`;
+    throw err;
+  } finally {
+    isLoading.value = false;
+  }
+}
+
 const updateAppSettings = async (
   numberofBlocks?: number,
   totalHoursPerWeek?: number,
@@ -311,6 +327,7 @@ export const useAppStore = () => ({
   deleteCourse,
   createCourses,
   exportJSON,
+  exportPDF,
   updateAppSettings,
   newCourseBlock,
   updateCourseBlock,
