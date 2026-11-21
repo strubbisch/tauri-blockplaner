@@ -126,6 +126,7 @@ const activeView = ref<"overview" | "courses" | "settings" | "students" | "cours
         v-else-if="activeView === 'blocks'"
         class="flex-1"
         :blocks="appStore.appData.value.blocks"
+        :app-data="appStore.appData.value"
         :is-loading="appStore.isLoading.value"
       />
     </div>

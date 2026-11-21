@@ -1,13 +1,65 @@
 <script setup lang="ts">
-import { Block } from '../stores/appStore';
+import { Block, AppData, Course } from '../stores/appStore';
 
 
 interface Props {
     blocks?: Block[];
-    isLoading?: boolean; 
+    isLoading?: boolean;
+    appData?: AppData;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+
+const getCoursesInBlock = (blockId: number): Course[] => {
+    if (!props.appData) return [];
+    
+    const blockAssignments = props.appData.block_assignments.filter(ba => ba.block_id === blockId);
+    const courses: Course[] = [];
+    
+    for (const assignment of blockAssignments) {
+        const courseUnit = props.appData.course_units.find(cu => cu.id === assignment.course_unit_id);
+        if (courseUnit) {
+            const course = props.appData.courses.find(c => c.id === courseUnit.course_id);
+            if (course) {
+                courses.push(course);
+            }
+        }
+    }
+    
+    return courses;
+};
+
+const getCourseGroupName = (courseGroupId: number): string => {
+    if (!props.appData) return '';
+    const courseGroup = props.appData.course_groups.find(cg => cg.id === courseGroupId);
+    return courseGroup ? courseGroup.subject + "-" + courseGroup.course_type : '';
+};
+
+const getStudentCountInBlock = (blockId: number): number => {
+    const courses = getCoursesInBlock(blockId);
+    const studentIds = new Set<number>();
+    
+    for (const course of courses) {
+        for (const studentId of course.students) {
+            studentIds.add(studentId);
+        }
+    }
+    
+    return studentIds.size;
+};
+
+const getTotalStudents = (): number => {
+    if (!props.appData) return 0;
+    return props.appData.students.length;
+};
+
+const getBlockStudentPercentage = (blockId: number): number => {
+    const totalStudents = getTotalStudents();
+    if (totalStudents === 0) return 0;
+    
+    const blockStudents = getStudentCountInBlock(blockId);
+    return Math.round((blockStudents / totalStudents) * 100);
+};
 
 </script>
 
@@ -28,7 +80,23 @@ defineProps<Props>();
                 class="rounded-md border border-zinc-300 bg-white p-3 shadow-sm transition hover:shadow-md"
             >
                 <div class="mb-2.5 flex items-center justify-between border-b border-zinc-200 pb-2">
-                    <h4 class="m-0 text-sm font-semibold text-zinc-800">Block {{ block.number }} ({{ block.length === 'Double' ? 2 : 1 }}h)</h4>
+                    <h4 class="m-0 text-sm font-semibold text-zinc-800">
+                        Block {{ block.number }} ({{ block.length === 'Double' ? 2 : 1 }}h) 
+                        - {{ getStudentCountInBlock(block.id) }} Schüler ({{ getBlockStudentPercentage(block.id) }}%)
+                    </h4>
+                </div>
+                
+                <div class="space-y-2">
+                    <div
+                        v-for="course in getCoursesInBlock(block.id)"
+                        :key="course.id"
+                        class="rounded border border-zinc-200 bg-zinc-50 p-2 text-sm text-zinc-700"
+                    >
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium">{{ getCourseGroupName(course.course_group) }}-{{ course.number }}</span>
+                            <span class="text-zinc-600">{{ course.hours_per_week }}h/Woche · {{ course.students.length }} Schüler</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
