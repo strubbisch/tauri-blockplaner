@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Block, AppData, Course } from '../stores/appStore';
+import { Block, AppData, Course, CourseUnit, BlockAssignment, CourseGroup } from '../stores/appStore';
 
 
 interface Props {
@@ -8,20 +8,25 @@ interface Props {
     appData?: AppData;
 }
 
+interface CourseInBlock {
+    course: Course;
+    courseUnit: CourseUnit;
+}
+
 const props = defineProps<Props>();
 
-const getCoursesInBlock = (blockId: number): Course[] => {
+const getCoursesInBlock = (blockId: number): CourseInBlock[] => {
     if (!props.appData) return [];
     
-    const blockAssignments = props.appData.block_assignments.filter(ba => ba.block_id === blockId);
-    const courses: Course[] = [];
+    const blockAssignments = props.appData.block_assignments.filter((ba: BlockAssignment) => ba.block_id === blockId);
+    const courses: CourseInBlock[] = [];
     
     for (const assignment of blockAssignments) {
-        const courseUnit = props.appData.course_units.find(cu => cu.id === assignment.course_unit_id);
+        const courseUnit = props.appData.course_units.find((cu: CourseUnit) => cu.id === assignment.course_unit_id);
         if (courseUnit) {
-            const course = props.appData.courses.find(c => c.id === courseUnit.course_id);
+            const course = props.appData.courses.find((c: Course) => c.id === courseUnit.course_id);
             if (course) {
-                courses.push(course);
+                courses.push({ course, courseUnit });
             }
         }
     }
@@ -31,15 +36,15 @@ const getCoursesInBlock = (blockId: number): Course[] => {
 
 const getCourseGroupName = (courseGroupId: number): string => {
     if (!props.appData) return '';
-    const courseGroup = props.appData.course_groups.find(cg => cg.id === courseGroupId);
+    const courseGroup = props.appData.course_groups.find((cg: CourseGroup) => cg.id === courseGroupId);
     return courseGroup ? courseGroup.subject + "-" + courseGroup.course_type : '';
 };
 
 const getStudentCountInBlock = (blockId: number): number => {
-    const courses = getCoursesInBlock(blockId);
+    const coursesInBlock = getCoursesInBlock(blockId);
     const studentIds = new Set<number>();
     
-    for (const course of courses) {
+    for (const { course } of coursesInBlock) {
         for (const studentId of course.students) {
             studentIds.add(studentId);
         }
@@ -88,13 +93,13 @@ const getBlockStudentPercentage = (blockId: number): number => {
                 
                 <div class="space-y-2">
                     <div
-                        v-for="course in getCoursesInBlock(block.id)"
+                        v-for="{ course, courseUnit } in getCoursesInBlock(block.id)"
                         :key="course.id"
                         class="rounded border border-zinc-200 bg-zinc-50 p-2 text-sm text-zinc-700"
                     >
                         <div class="flex items-center justify-between">
                             <span class="font-medium">{{ getCourseGroupName(course.course_group) }}-{{ course.number }}</span>
-                            <span class="text-zinc-600">{{ course.hours_per_week }}h/Woche · {{ course.students.length }} Schüler</span>
+                            <span class="text-zinc-600">{{ courseUnit.length === 'Double' ? 2 : 1 }}h · {{ course.students.length }} Schüler</span>
                         </div>
                     </div>
                 </div>
